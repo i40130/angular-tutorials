@@ -1,15 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+@import 'flowbite/dist/flowbite.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@import 'flowbite/dist/flowbite.css';
 
 
-body{
-  background: #111827;
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Vista completa de la altura del navegador */
+   /* background: #111827;*/
+}
+
+app-root {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Ocupa todo el espacio disponible */
+}
 
 
 * {
