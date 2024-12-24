@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Tutoriales-de-Angular": {
+    "my-angular-project": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -25,9 +25,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/styles.css",
+              "node_modules/flowbite/dist/flowbite.min.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/flowbite/dist/flowbite.min.js"
+            ],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
