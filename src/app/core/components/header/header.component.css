@@ -1,2 +1,7 @@
 
 /* Add any component-specific styles here */
+.active {
+  font-weight: bold;
+  color: #2563EB; /* Cambia el color o el estilo como prefieras */
+  border-bottom: 2px solid #2563EB; /* Subrayado opcional */
+}
