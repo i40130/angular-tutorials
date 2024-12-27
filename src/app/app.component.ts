@@ -68,6 +68,42 @@ export class AppComponent implements OnInit {
           }
         }
       });
+
+      // --- Lógica para generar el índice dinámico ---
+      const tocList = document.getElementById('toc-list'); // Contenedor del índice
+
+      // Seleccionar encabezados **SOLO DENTRO DEL ARTICLE**
+      const article = document.querySelector('article'); // Seleccionamos el <article>
+      const headers = article?.querySelectorAll('h2, h3'); // Solo encabezados dentro del article
+
+      let currentH2List: HTMLUListElement | null = null;
+
+      headers?.forEach(header => {
+        // Crear enlace para el encabezado
+        const link = document.createElement('a');
+        link.href = `#${header.id}`;
+        link.textContent = header.textContent || '';
+        link.className = "block py-2 text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-500";
+
+        // Crear elemento de lista
+        const listItem = document.createElement('li');
+
+        if (header.tagName === 'H2') {
+          // Añadir h2 como nivel principal
+          listItem.appendChild(link);
+          tocList?.appendChild(listItem);
+
+          // Crear sublista para h3
+          currentH2List = document.createElement('ul');
+          currentH2List.className = "pl-4 border-l-2 border-blue-500 space-y-1";
+          listItem.appendChild(currentH2List);
+        } else if (header.tagName === 'H3' && currentH2List) {
+          // Añadir h3 dentro del último h2
+          const subItem = document.createElement('li');
+          subItem.appendChild(link);
+          currentH2List.appendChild(subItem);
+        }
+      });
     } // Fin del bloque 'if' para verificar el entorno
   }
 }
