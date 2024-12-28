@@ -22,7 +22,7 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/content-tutorial/content-tutorial.component').then(m => m.ContentTutorialComponent)
   },
   {
-    path: 'en-construccion',
+    path: 'angular-v19',
     loadComponent: () => import('./pages/en-construccion/en-construccion.component').then(m => m.EnConstruccionComponent)
   }
 ];
