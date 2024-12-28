@@ -1,0 +1,33 @@
+
+/* Add component specific styles here */
+.text-blue-600 {
+  color: #2563eb;
+}
+
+.bg-white {
+  background-color: #ffffff;
+}
+
+.dark\:bg-gray-900 {
+  background-color: #111827;
+}
+
+.dark\:text-blue-500 {
+  color: #3b82f6;
+}
+
+.dark\:text-white {
+  color: #ffffff;
+}
+
+.dark\:text-gray-400 {
+  color: #9ca3af;
+}
+
+.hover\:bg-blue-800:hover {
+  background-color: #1e40af;
+}
+
+.dark\:focus\:ring-blue-900:focus {
+  --tw-ring-color: #1e3a8a;
+}
