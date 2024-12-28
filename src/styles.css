@@ -24,7 +24,9 @@ app-root {
   flex-grow: 1; /* Ocupa todo el espacio disponible */
 }
 
-
+main{
+  flex-grow: 1;
+}
 
 
 * {

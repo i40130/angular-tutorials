@@ -18,7 +18,7 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/faqs/faqs.component').then(m => m.FaqsComponent)
   },
   {
-    path: 'tutoriales',
+    path: 'angular-v18/:id', // Rutas dinámicas para tutoriales
     loadComponent: () => import('./pages/content-tutorial/content-tutorial.component').then(m => m.ContentTutorialComponent)
   }
 ];
