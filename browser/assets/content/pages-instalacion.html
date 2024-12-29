@@ -1,0 +1,179 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+  >
+    INSTALACION DE ANGULAR
+  </h1>
+</header>
+
+<p class="lead">
+  <strong>Angular</strong> es un framework de JavaScript muy popular para el
+  desarrollo de aplicaciones web. Para comenzar a trabajar con él, lo primero
+  que necesitas es instalarlo en tu entorno de desarrollo.
+</p>
+<h2 id="seccion1">Requisitos previos</h2>
+<ul>
+  <li>
+    <strong>Node.js y npm (o yarn):</strong> Estos son fundamentales para la
+    gestión de paquetes en JavaScript. Puedes descargarlos desde
+    <a href="https://nodejs.org/">https://nodejs.org/</a>.
+  </li>
+</ul>
+<h2 id="seccion2">Pasos para la instalación</h2>
+<ol>
+  <li>
+    <p><strong>Verifica las versiones:</strong></p>
+    <ul>
+      <li>
+        <p>Abre tu terminal o línea de comandos.</p>
+      </li>
+      <li>
+        <p>
+          Ejecuta los siguientes comandos para verificar las versiones
+          instaladas de Node.js y npm:<br />
+          Bash
+        </p>
+        <pre><code>node -v
+npm -v
+
+</code></pre>
+      </li>
+      <li>
+        <p>
+          Si aún no los tienes instalados, sigue las instrucciones de la página
+          oficial de Node.js.
+        </p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Instala Angular CLI:</strong></p>
+    <ul>
+      <li>
+        Angular CLI (Command Line Interface) es una herramienta que simplifica
+        la creación y gestión de proyectos Angular.
+      </li>
+      <li>
+        Ejecuta el siguiente comando en tu terminal.<br />
+        <strong>Bash</strong>
+        <pre><code>npm install -g @angular/cli
+
+</code></pre>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Verifica la instalación:</strong></p>
+    <ul>
+      <li>
+        <p>
+          Ejecuta el siguiente comando para verificar si Angular CLI se instaló
+          correctamente:
+        </p>
+        <p>Bash</p>
+        <pre><code>ng --version
+
+</code></pre>
+      </li>
+      <li>
+        <p>Deberías ver la versión instalada de Angular CLI.</p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Crea un nuevo proyecto:</strong></p>
+    <ul>
+      <li>
+        <p>Navega al directorio donde deseas crear tu proyecto.</p>
+      </li>
+      <li>
+        <p>
+          Ejecuta el siguiente comando para crear un nuevo proyecto Angular:
+        </p>
+        <p>Bash</p>
+        <pre><code>ng new mi-proyecto
+
+</code></pre>
+        <p>
+          Reemplaza <code>mi-proyecto</code> con el nombre que quieras darle a
+          tu proyecto.
+        </p>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Ejecuta la aplicación:</strong></p>
+    <ul>
+      <li>
+        <p>Una vez creado el proyecto, navega a su directorio:</p>
+        <p>Bash</p>
+        <pre><code>cd mi-proyecto
+
+</code></pre>
+      </li>
+      <li>
+        <p>Inicia el servidor de desarrollo:</p>
+        <p>Bash</p>
+        <pre><code>ng serve
+
+</code></pre>
+      </li>
+      <li>
+        <p>
+          Abre tu navegador y ve a <code>http://localhost:4200/</code>. Deberías
+          ver la página de bienvenida de tu nueva aplicación Angular.
+        </p>
+      </li>
+    </ul>
+  </li>
+</ol>
+<h3 id="subseccion2-1">Explicación de los comandos</h3>
+<ul>
+  <li>
+    <strong><code>npm install -g @angular/cli</code>:</strong> Instala Angular
+    CLI globalmente, lo que te permite usar el comando <code>ng</code> desde
+    cualquier directorio.
+  </li>
+  <li>
+    <strong><code>ng new mi-proyecto</code>:</strong> Crea un nuevo proyecto
+    Angular con el nombre especificado. Genera toda la estructura de archivos y
+    configuraciones necesarias.
+  </li>
+  <li>
+    <strong><code>ng serve</code>:</strong> Inicia un servidor de desarrollo
+    local y compila tu aplicación en tiempo real.
+  </li>
+</ul>
+<h3 id="subseccion2-2">Personalización</h3>
+<ul>
+  <li>
+    <strong>Opciones adicionales:</strong>
+    <ul>
+      <li>
+        <code>ng new mi-proyecto --style=scss</code>: Utiliza Sass como
+        preprocesador de estilos.
+      </li>
+      <li>
+        <code>ng new mi-proyecto --routing</code>: Genera un módulo de
+        enrutamiento.
+      </li>
+      <li>
+        Para ver todas las opciones disponibles, ejecuta
+        <code>ng new --help</code>.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <strong>Configuración:</strong>
+    <ul>
+      <li>
+        El archivo <code>angular.json</code> contiene la configuración global de
+        tu proyecto.
+      </li>
+      <li>
+        El archivo <code>tsconfig.json</code> configura el compilador
+        TypeScript.
+      </li>
+    </ul>
+  </li>
+</ul>

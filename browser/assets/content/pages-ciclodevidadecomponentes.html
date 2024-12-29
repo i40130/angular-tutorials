@@ -1,0 +1,106 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+  >
+    EL CICLO DE VIDA DE UN COMPONENTE EN ANGULAR
+  </h1>
+</header>
+
+<p class="lead">
+  El ciclo de vida de un componente en Angular se refiere a las diferentes
+  etapas que atraviesa desde su creación hasta su destrucción. Angular
+  proporciona una serie de <em>hooks</em> o “ganchos” que permiten interceptar
+  estos momentos y ejecutar código específico en cada fase. Esto es fundamental
+  para realizar tareas como inicializar datos, suscribirse a observables,
+  limpiar recursos y más.
+</p>
+<h2 id="seccion1">Fases del Ciclo de Vida</h2>
+<p>
+  El ciclo de vida de un componente se divide en varias fases, cada una con sus
+  propios hooks:
+</p>
+<h3 id="seccion1-1">1. <strong>Creación:</strong></h3>
+<pre><code>-   **`ngOnChanges()`:** Se ejecuta cuando una o más propiedades de entrada del componente cambian.
+-   **`ngOnInit()`:** Se ejecuta una vez después de que los datos de entrada se han inicializado y se ha realizado la primera comprobación de cambios. Es ideal para realizar tareas de inicialización como suscripciones a observables o cargar datos.
+</code></pre>
+<h3 id="seccion1-2">2. <strong>Actualización:</strong></h3>
+<pre><code>-   **`ngDoCheck()`:** Se ejecuta después de cada ciclo de detección de cambios. Se utiliza para realizar comprobaciones personalizadas, pero se debe usar con precaución para evitar bucles infinitos.
+-   **`ngAfterContentInit()`:** Se ejecuta después de que el contenido proyectado en el componente ha sido inicializado.
+-   **`ngAfterContentChecked()`:** Se ejecuta después de cada comprobación de cambios en el contenido proyectado.
+-   **`ngAfterViewInit()`:** Se ejecuta después de que las vistas de los hijos del componente han sido inicializadas.
+-   **`ngAfterViewChecked()`:** Se ejecuta después de cada comprobación de cambios en las vistas de los hijos del componente.
+</code></pre>
+<h3 id="seccion1-3">3. <strong>Destrucción:</strong></h3>
+<pre><code>-   **`ngOnDestroy()`:** Se ejecuta justo antes de que el componente sea destruido. Es el lugar adecuado para limpiar recursos como suscripciones a observables o intervalos.
+</code></pre>
+<h2 id="seccion2">Ejemplo Práctico</h2>
+<p>TypeScript</p>
+<pre><code>import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+
+@Component({
+  selector: 'app-mi-componente',
+  templateUrl: './mi-componente.component.html',
+  styleUrls: ['./mi-componente.component.css']
+})
+export class MiComponenteComponent implements OnInit, OnDestroy {
+  subscription: Subscription;
+
+  ngOnInit(): void {
+    this.subscription = interval(1000).subscribe(x =&gt; console.log(x));
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
+  }
+}
+
+</code></pre>
+<p>En este ejemplo:</p>
+<ul>
+  <li>
+    En <code>ngOnInit()</code>, nos suscribimos a un observable que emite cada
+    segundo.
+  </li>
+  <li>
+    En <code>ngOnDestroy()</code>, nos desuscribimos para evitar fugas de
+    memoria.
+  </li>
+</ul>
+<h2 id="seccion3">Usos Comunes de los Hooks</h2>
+<ul>
+  <li>
+    <strong>Inicialización:</strong> Cargar datos, suscribirse a observables,
+    configurar servicios.
+  </li>
+  <li>
+    <strong>Detección de cambios:</strong> Realizar cálculos basados en cambios
+    en los datos de entrada.
+  </li>
+  <li>
+    <strong>Limpieza:</strong> Cancelar suscripciones, limpiar intervalos,
+    liberar recursos.
+  </li>
+</ul>
+<h2 id="seccion4">Consideraciones Importantes</h2>
+<ul>
+  <li>
+    <strong>Evitar bucles infinitos:</strong> El uso excesivo de
+    <code>ngDoCheck</code> puede causar bucles infinitos si no se tiene cuidado.
+  </li>
+  <li>
+    <strong>Optimizar el rendimiento:</strong> Utiliza los hooks adecuados para
+    cada tarea y evita realizar tareas costosas en cada ciclo de detección de
+    cambios.
+  </li>
+  <li>
+    <strong>Entender el flujo:</strong> Comprender el orden en que se ejecutan
+    los hooks es crucial para escribir código eficiente y correcto.
+  </li>
+</ul>
+<p>
+  El ciclo de vida de un componente en Angular proporciona una estructura clara
+  para gestionar las diferentes etapas de un componente. Al utilizar los hooks
+  de ciclo de vida de manera efectiva, puedes crear componentes más robustos,
+  eficientes y fáciles de mantener.
+</p>

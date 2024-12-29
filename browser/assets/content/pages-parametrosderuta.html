@@ -1,0 +1,126 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+  >
+    PARÁMETROS DE RUTA EN ANGULAR
+  </h1>
+</header>
+
+<h2 id="seccion1">¿Qué son los parámetros de ruta?</h2>
+<p>
+  En Angular, los parámetros de ruta son valores dinámicos que se incluyen en la
+  URL para identificar de forma única un recurso o elemento específico. Estos
+  valores se extraen de la URL y se utilizan en el componente correspondiente
+  para mostrar información personalizada o realizar acciones específicas.
+</p>
+<h2 id="seccion2">¿Cómo funcionan?</h2>
+<ol>
+  <li>
+    <strong>Definición en la ruta:</strong> Se definen dentro de la parte de la
+    ruta que queremos que sea dinámica, encerrándolos entre dos puntos (:).
+  </li>
+  <li>
+    <strong>Extracción en el componente:</strong> Se utiliza el servicio
+    <code>ActivatedRoute</code> para acceder a los valores de los parámetros de
+    ruta.
+  </li>
+</ol>
+<h3 id="subseccion2-1">Ejemplo práctico</h3>
+<p>TypeScript</p>
+<pre><code>// app-routing.module.ts
+const routes: Routes = [
+  {
+    path: 'products/:id',
+    component: ProductDetailComponent
+  }
+];
+
+</code></pre>
+<p>
+  En este ejemplo, <code>:id</code> es un parámetro de ruta. Cuando un usuario
+  navega a la URL <code>/products/123</code>, el valor <code>123</code> se
+  asignará a la variable <code>id</code> en el componente
+  <code>ProductDetailComponent</code>.
+</p>
+<p>TypeScript</p>
+<pre><code>// product-detail.component.ts
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+
+@Component({
+  // ...
+})
+export class ProductDetailComponent implements OnInit {
+  productId: string;
+
+  constructor(private route: ActivatedRoute) { }
+
+  ngOnInit() {
+    this.route.paramMap.subscribe(params =&gt; {
+      this.productId = params.get('id');
+      // Ahora puedes utilizar productId para obtener los datos del producto
+    });
+  }
+}
+
+</code></pre>
+<h2 id="seccion3">Usos comunes</h2>
+<ul>
+  <li>
+    <strong>Mostrar detalles de un elemento:</strong> Por ejemplo, mostrar los
+    detalles de un producto, un usuario, un artículo, etc.
+  </li>
+  <li>
+    <strong>Filtrar datos:</strong> Mostrar una lista de elementos filtrados
+    según un criterio especificado en el parámetro de ruta.
+  </li>
+  <li>
+    <strong>Construir URLs dinámicas:</strong> Crear enlaces a diferentes
+    secciones de la aplicación basadas en datos variables.
+  </li>
+</ul>
+<h2 id="seccion4">Consideraciones adicionales</h2>
+<ul>
+  <li>
+    <strong>Múltiples parámetros:</strong> Se pueden definir múltiples
+    parámetros en una ruta, separándolos por barras diagonales (/).
+  </li>
+  <li>
+    <strong>Parámetros opcionales:</strong> Los parámetros de ruta pueden ser
+    opcionales utilizando un signo de interrogación (?).
+  </li>
+  <li>
+    <strong>Rutas con comodines:</strong> Se puede utilizar un asterisco (*)
+    para capturar cualquier segmento de la URL que no coincida con los
+    parámetros definidos.
+  </li>
+</ul>
+<h2 id="seccion5">Buenas prácticas</h2>
+<ul>
+  <li>
+    <strong>Nombres significativos:</strong> Utilizar nombres claros y
+    descriptivos para los parámetros.
+  </li>
+  <li>
+    <strong>Validación:</strong> Asegurarse de que los valores de los parámetros
+    son válidos antes de utilizarlos.
+  </li>
+  <li>
+    <strong>Seguridad:</strong> Si los parámetros contienen datos sensibles,
+    tomar las medidas de seguridad necesarias para protegerlos.
+  </li>
+</ul>
+<h2 id="seccion6">
+  Ejemplo con múltiples parámetros y uno opcional
+</h2>
+<p>TypeScript</p>
+<pre><code>{ path: 'users/:userId/orders/:orderId', component: OrderDetailComponent }
+{ path: 'search/:query', component: SearchComponent }
+
+</code></pre>
+<p>
+  Los parámetros de ruta son una herramienta esencial en Angular para crear
+  aplicaciones dinámicas y flexibles. Al entender cómo definir y utilizar los
+  parámetros de ruta, podrás construir aplicaciones que respondan a las
+  interacciones del usuario de una manera más efectiva.
+</p>

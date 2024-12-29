@@ -1,0 +1,120 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+  >
+    PLANTILLAS
+  </h1>
+</header>
+<p class="lead">
+  Las plantillas en Angular son una parte fundamental para construir la interfaz
+  de usuario de tus aplicaciones. Son como la vista de un modelo MVC, donde
+  defines cómo se verá la información en pantalla.
+</p>
+<h2 id="seccion1">
+  ¿Qué son las plantillas en Angular?
+</h2>
+<p>
+  Las plantillas en Angular son archivos HTML que se utilizan para definir la
+  estructura y el contenido de un componente. Son como moldes que se rellenan
+  con los datos proporcionados por el componente correspondiente.
+</p>
+<h2 id="seccion2">
+  <strong>Características clave de las plantillas</strong>
+</h2>
+<ul>
+  <li>
+    <strong>Sintaxis específica:</strong> Utilizan una sintaxis especial para
+    enlazar datos, ejecutar lógica y controlar el flujo de la aplicación.
+  </li>
+  <li>
+    <strong>Interpolación:</strong> Permite insertar valores de variables o
+    expresiones directamente en el HTML.
+  </li>
+  <li>
+    <strong>Directivas:</strong> Son como mini-componentes que modifican el
+    comportamiento de los elementos del DOM. Hay directivas estructurales (como
+    *ngIf, *ngFor) y directivas de atributos (como ngClass, ngStyle).
+  </li>
+  <li>
+    <strong>Eventos:</strong> Permiten capturar eventos del usuario (clics,
+    cambios de valor, etc.) y ejecutar código en respuesta.
+  </li>
+  <li>
+    <strong>Pipes:</strong> Transforman los datos antes de mostrarlos en la
+    plantilla (por ejemplo, formatear fechas, convertir a mayúsculas).
+  </li>
+</ul>
+<h2 id="seccion3">
+  <strong>Ejemplo de una plantilla</strong>
+</h2>
+<p>HTML</p>
+<pre><code>&lt;div&gt;
+  &lt;h1&gt;{{ titulo }}&lt;/h1&gt;
+  &lt;ul&gt;
+    &lt;li *ngFor="let item of items"&gt;{{ item }}&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/div&gt;
+
+</code></pre>
+<p>En este ejemplo:</p>
+<ul>
+  <li>
+    <code>{{ titulo }}</code>: Interpola el valor de la propiedad
+    <code>titulo</code> del componente.
+  </li>
+  <li>
+    <code>*ngFor</code>: Es una directiva estructural que itera sobre un arreglo
+    de datos (<code>items</code>) y crea un elemento <code>&lt;li&gt;</code> por
+    cada elemento del arreglo.
+  </li>
+</ul>
+<h2 id="seccion4">
+  <strong>¿Cómo funciona el enlace de datos en las plantillas?</strong>
+</h2>
+<p>
+  Angular utiliza un sistema de enlace de datos bidireccional. Esto significa
+  que los cambios en los datos del componente se reflejan automáticamente en la
+  plantilla, y viceversa.
+</p>
+<h3 id="subseccion4-1">
+  <strong>Tipos de enlace de datos</strong>
+</h3>
+<ul>
+  <li>
+    <strong>Interpolación:</strong> Enlaza una propiedad del componente al
+    contenido de un elemento.
+  </li>
+  <li>
+    <strong>Property binding:</strong> Enlaza una propiedad del componente a una
+    propiedad de un elemento HTML.
+  </li>
+  <li>
+    <strong>Event binding:</strong> Enlaza un evento de un elemento HTML a un
+    método del componente.
+  </li>
+  <li>
+    <strong>Two-way binding:</strong> Combina property binding y event binding
+    para crear una sincronización bidireccional.
+  </li>
+</ul>
+<h2 id="seccion5">
+  <strong>Mejores prácticas para las plantillas</strong>
+</h2>
+<ul>
+  <li>
+    <strong>Mantenerlas simples y legibles:</strong> Evita anidar demasiadas
+    estructuras y utiliza comentarios para explicar secciones complejas.
+  </li>
+  <li>
+    <strong>Utilizar pipes para formatear datos:</strong> Los pipes hacen que el
+    código de la plantilla sea más limpio y legible.
+  </li>
+  <li>
+    <strong>Evitar la lógica compleja en las plantillas:</strong> La lógica
+    compleja debe ir en el componente.
+  </li>
+  <li>
+    <strong>Utilizar componentes para encapsular la lógica:</strong> Divide la
+    interfaz de usuario en componentes más pequeños y reutilizables.
+  </li>
+</ul>

@@ -1,0 +1,132 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+  >
+    ZONAS
+  </h1>
+</header>
+<h2 id="seccion1">Una Explicación Detallada</h2>
+<h3 id="subseccion1-1">¿Qué son las zonas en Angular?</h3>
+<p>
+  Las zonas en Angular, específicamente referidas a <strong>Zone.js</strong>,
+  son un mecanismo que permite a Angular detectar cambios en el estado de la
+  aplicación y desencadenar la detección de cambios. Esto es crucial para que la
+  interfaz de usuario se actualice de manera reactiva cuando los datos
+  subyacentes cambian.
+</p>
+<p>
+  <strong>Zone.js</strong> crea un contexto de ejecución global que envuelve
+  todo el código de tu aplicación. Cada vez que se produce un evento asíncrono
+  (como un clic, una promesa resuelta, un temporizador, etc.), se crea una nueva
+  zona. Angular monitorea estas zonas y cuando una zona se completa, se
+  desencadena un ciclo de detección de cambios.
+</p>
+<h3 id="subseccion1-2">¿Por qué son importantes las zonas?</h3>
+<ul>
+  <li>
+    <strong>Detección de cambios:</strong> Gracias a las zonas, Angular sabe
+    cuándo necesita actualizar la vista.
+  </li>
+  <li>
+    <strong>Asincronía:</strong> Manejan de manera eficiente las operaciones
+    asíncronas, asegurando que la interfaz de usuario se actualice
+    correctamente.
+  </li>
+  <li>
+    <strong>Integración con otras librerías:</strong> Facilitan la integración
+    de Angular con otras librerías que utilizan mecanismos de detección de
+    cambios diferentes.
+  </li>
+</ul>
+<h3 id="subseccion1-3">¿Cómo funcionan las zonas?</h3>
+<figure>
+  <img
+    src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcSQb1T47Ius5th7AjUIPvxtMT1P2AIf8rbUX6vQHyKfFCydAEF4l3KKsb2fIpI1"
+    alt="Diagrama de zonas Angular"
+  />
+  <figcaption>Diagrama de zonas</figcaption>
+</figure>
+<ol>
+  <li>
+    <strong>Creación de una zona:</strong> Cuando se inicia la aplicación, se
+    crea una zona global.
+  </li>
+  <li>
+    <strong>Eventos asíncronos:</strong> Cada vez que ocurre un evento
+    asíncrono, se crea una nueva zona hija.
+  </li>
+  <li>
+    <strong>Detección de cambios:</strong> Al finalizar una zona, Angular
+    recorre el árbol de componentes para detectar cambios y actualizar la vista
+    si es necesario.
+  </li>
+</ol>
+<h3 id="subseccion1-4">¿Cuándo utilizar las zonas?</h3>
+<ul>
+  <li>
+    <strong>Operaciones asíncronas:</strong> Son ideales para manejar
+    operaciones asíncronas como promesas, observables y temporizadores.
+  </li>
+  <li>
+    <strong>Integración con librerías externas:</strong> Facilitan la
+    integración con librerías que no utilizan la detección de cambios de
+    Angular.
+  </li>
+  <li>
+    <strong>Optimización del rendimiento:</strong> En algunos casos, puedes
+    utilizar <code>NgZone.runOutsideAngular()</code> para ejecutar código fuera
+    de la zona de Angular y mejorar el rendimiento.
+  </li>
+</ul>
+<h3 id="subseccion1-5">¿Cómo trabajar con las zonas?</h3>
+<ul>
+  <li>
+    <strong>NgZone:</strong> Este servicio te permite interactuar con las zonas.
+    Por ejemplo, puedes ejecutar código fuera de la zona utilizando
+    <code>runOutsideAngular()</code>.
+  </li>
+  <li>
+    <strong>ChangeDetectorRef:</strong> Este servicio te permite forzar la
+    detección de cambios manualmente en un componente.
+  </li>
+</ul>
+<p>TypeScript</p>
+<pre><code>import { Component, NgZone } from '@angular/core';
+
+@Component({
+  selector: 'app-my-component',
+  templateUrl: './my-component.html',
+  styleUrls: ['./my-component.css']
+})
+export class MyComponent {
+  constructor(private ngZone: NgZone) {}
+
+  heavyTask() {
+    this.ngZone.runOutsideAngular(() =&gt; {
+      // Código que no necesita desencadenar la detección de cambios
+    });
+  }
+}
+
+</code></pre>
+<h2 id="seccion2">Consideraciones importantes</h2>
+<ul>
+  <li>
+    <strong>Rendimiento:</strong> El uso excesivo de zonas puede afectar el
+    rendimiento de tu aplicación.
+  </li>
+  <li>
+    <strong>Detección de cambios:</strong> Comprender cómo funciona la detección
+    de cambios es crucial para optimizar el rendimiento de tu aplicación.
+  </li>
+  <li>
+    <strong>Integración con otras librerías:</strong> Asegúrate de que las
+    librerías que utilizas sean compatibles con Angular y sus zonas.
+  </li>
+</ul>
+<p>
+  Las zonas en Angular son un mecanismo fundamental para la detección de cambios
+  y la gestión de la asincronía. Aunque pueden parecer complejas al principio,
+  comprender su funcionamiento te permitirá crear aplicaciones Angular más
+  eficientes y robustas.
+</p>

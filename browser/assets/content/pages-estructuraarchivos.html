@@ -1,0 +1,132 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+  >
+    ESTRUCTURA DE ARCHIVOS
+  </h1>
+</header>
+
+<p class="lead">
+  La estructura de un proyecto Angular es bastante organizada y sigue una
+  convención de nombres que facilita la comprensión y el mantenimiento del
+  código. A continuación, te explicaré los archivos y carpetas más importantes
+  que encontrarás en un proyecto Angular típico generado con Angular CLI:
+</p>
+<h2 id="seccion1">Estructura Básica de un Proyecto Angular</h2>
+<p>
+  Cuando creas un nuevo proyecto Angular utilizando <code>ng new my-app</code>,
+  se genera una estructura de carpetas y archivos predeterminada que se organiza
+  de la siguiente manera:
+</p>
+<pre><code>my-app/
+├── e2e/
+├── node_modules/
+├── src/
+│   ├── app/
+│   │   ├── app.component.ts
+│   │   ├── app.component.html
+│   │   ├── app.component.css
+│   │   ├── app.module.ts
+│   │   └── ... (otros componentes, servicios, etc.)
+│   ├── assets/
+│   ├── environments/
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── main.ts
+│   ├── polyfills.ts
+│   └── styles.css
+├── .angular.json
+├── .editorconfig
+├── .gitignore
+├── package.json
+├── README.md
+└── tsconfig.json
+
+</code></pre>
+<p><strong>Explicación de las carpetas y archivos clave:</strong></p>
+<ul>
+  <li>
+    <strong>e2e:</strong> Contiene las pruebas end-to-end de la aplicación.
+  </li>
+  <li>
+    <strong>node_modules:</strong> Almacena todas las dependencias del proyecto,
+    es decir, los paquetes de npm que se instalan.
+  </li>
+  <li>
+    <strong>src:</strong> Contiene el código fuente de la aplicación.
+    <ul>
+      <li>
+        <strong>app:</strong> Aquí se encuentran los componentes, servicios,
+        módulos y otros elementos principales de la aplicación.
+      </li>
+      <li>
+        <strong>assets:</strong> Almacena archivos estáticos como imágenes,
+        fuentes, etc.
+      </li>
+      <li>
+        <strong>environments:</strong> Contiene archivos de configuración para
+        diferentes entornos (desarrollo, producción).
+      </li>
+      <li>
+        <strong>index.html:</strong> El archivo HTML principal de la aplicación.
+      </li>
+      <li><strong>main.ts:</strong> El punto de entrada de la aplicación.</li>
+      <li>
+        <strong>polyfills.ts:</strong> Contiene polyfills para navegadores que
+        no soportan todas las características de JavaScript modernas.
+      </li>
+      <li>
+        <strong>styles.css:</strong> Hoja de estilos global para la aplicación.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <strong>.angular.json:</strong> Contiene la configuración del proyecto, como
+    rutas, opciones de compilación, etc.
+  </li>
+  <li>
+    <strong>package.json:</strong> Describe el proyecto y sus dependencias.
+  </li>
+  <li>
+    <strong>tsconfig.json:</strong> Contiene la configuración del compilador de
+    TypeScript.
+  </li>
+</ul>
+<p>
+  <strong>Elementos clave dentro de la carpeta <code>app</code>:</strong>
+</p>
+<ul>
+  <li>
+    <strong>Componentes:</strong> Cada componente representa una parte de la
+    interfaz de usuario y consta de tres archivos:
+    <ul>
+      <li>
+        <strong>.ts:</strong> Contiene la lógica del componente (TypeScript).
+      </li>
+      <li>
+        <strong>.html:</strong> Define la plantilla del componente (HTML).
+      </li>
+      <li>
+        <strong>.css:</strong> Contiene los estilos específicos del componente
+        (CSS).
+      </li>
+    </ul>
+  </li>
+  <li>
+    <strong>Módulos:</strong> Organizan el código de la aplicación en bloques
+    funcionales. El módulo raíz <code>AppModule</code> es el punto de partida de
+    la aplicación.
+  </li>
+  <li>
+    <strong>Servicios:</strong> Contienen la lógica de negocio de la aplicación
+    y se utilizan para compartir datos y funcionalidad entre componentes.
+  </li>
+</ul>
+<h2 id="seccion2">¿Por qué esta estructura?</h2>
+<p>
+  Esta estructura proporciona una forma clara y organizada de gestionar un
+  proyecto Angular. Al separar los componentes, servicios y módulos, se facilita
+  la mantenibilidad y la escalabilidad de la aplicación. Además, Angular CLI
+  ofrece herramientas para generar automáticamente nuevos componentes, servicios
+  y módulos, lo que agiliza el desarrollo.
+</p>

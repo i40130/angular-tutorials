@@ -1,0 +1,103 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+  >
+    DEFINICIÓN DE COMPONENTES
+  </h1>
+</header>
+<p class="lead">
+  En Angular, los componentes son la base fundamental para construir interfaces
+  de usuario. Son bloques de construcción reutilizables que encapsulan una
+  porción de la interfaz, su lógica y su estilo.
+</p>
+<h2 id="seccion1">Componentes en Angular</h2>
+<h3 id="subseccion1-1"><strong>¿Cómo se define un componente?</strong></h3>
+<p>
+  Para definir un componente en Angular, se utiliza el decorador
+  <code>@Component</code> junto con una clase TypeScript. Este decorador
+  proporciona metadatos sobre el componente, como su selector, plantilla y
+  estilos.
+</p>
+<h3 id="subseccion1-2"><strong>Estructura básica de un componente</strong></h3>
+<p>TypeScript</p>
+<pre><code>import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-mi-componente',
+  templateUrl: './mi-componente.component.html',
+  styleUrls: ['./mi-componente.component.css']
+})
+export class MiComponenteComponent {
+  // Propiedades y métodos del componente
+}
+
+</code></pre>
+<p><strong>Explicación de cada parte:</strong></p>
+<ul>
+  <li>
+    <p>
+      <strong><code>@Component</code>:</strong> Este decorador marca la clase
+      como un componente y recibe un objeto de configuración.
+    </p>
+    <ul>
+      <li>
+        <strong><code>selector</code>:</strong> Un string que indica el nombre
+        del elemento HTML que representará al componente en la plantilla. En
+        este caso, <code>&lt;app-mi-componente&gt;</code>.
+      </li>
+      <li>
+        <strong><code>templateUrl</code>:</strong> La ruta al archivo HTML que
+        contiene la plantilla del componente.
+      </li>
+      <li>
+        <strong><code>styleUrls</code>:</strong> Un array de rutas a los
+        archivos CSS que contienen los estilos del componente.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Clase TypeScript:</strong></p>
+    <ul>
+      <li>
+        Contiene la lógica del componente, como propiedades, métodos y eventos.
+      </li>
+      <li>
+        Las propiedades se pueden utilizar para almacenar datos que se mostrarán
+        en la plantilla.
+      </li>
+      <li>
+        Los métodos pueden realizar acciones en respuesta a eventos del usuario
+        o cambios en los datos.
+      </li>
+    </ul>
+  </li>
+</ul>
+<p><strong>Ejemplo de plantilla (mi-componente.component.html):</strong></p>
+<p>HTML</p>
+<pre><code>&lt;p&gt;Hola desde mi componente!&lt;/p&gt;
+&lt;button (click)="saludar()"&gt;Saludar&lt;/button&gt;
+
+</code></pre>
+<p><strong>Ejemplo de estilo (mi-componente.component.css):</strong></p>
+<p>CSS</p>
+<pre><code>p {
+  color: blue;
+}
+
+</code></pre>
+<h2 id="seccion2"><strong>¿Cómo se utiliza un componente?</strong></h2>
+<p>
+  Una vez definido un componente, se puede utilizar en otras partes de la
+  aplicación incluyéndolo en la plantilla de otro componente o en el
+  <code>index.html</code> principal. Por ejemplo:
+</p>
+<p>HTML</p>
+<pre><code>&lt;app-mi-componente&gt;&lt;/app-mi-componente&gt;
+
+</code></pre>
+<p>
+  Los componentes en Angular son unidades independientes y reutilizables que
+  encapsulan una porción de la interfaz de usuario. Al definir un componente, se
+  especifica su selector, plantilla y estilos. Estos componentes se pueden
+  anidar y combinar para crear interfaces de usuario complejas y dinámicas.
+</p>

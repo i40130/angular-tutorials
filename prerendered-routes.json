@@ -1,0 +1,9 @@
+{
+  "routes": [
+    "/",
+    "/angular-v19",
+    "/equipo",
+    "/faqs",
+    "/referencias"
+  ]
+}
