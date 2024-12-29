@@ -21,13 +21,14 @@ export class ContentTutorialComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private sanitizer: DomSanitizer) {}
 
+  /*
   ngOnInit(): void {
     // Suscribirse a los cambios en los parámetros de la ruta (para detectar cambios dinámicos)
     this.routeSub = this.route.paramMap.subscribe((params) => {
       const pageId = params.get('id') || 'pages-introduccion'; // Obtener el parámetro dinámico
 
       // Ruta del archivo HTML externo basado en el ID
-      const filePath = `/assets/content/${pageId}.html`;
+      const filePath = `/angular-tutorials/assets/content/${pageId}.html`;
 
       // Cargar el contenido dinámico del archivo HTML
       this.http.get(filePath, { responseType: 'text' }).subscribe(
@@ -44,7 +45,40 @@ export class ContentTutorialComponent implements OnInit {
       );
     });
   }
-  
+  */
+
+  ngOnInit(): void {
+    // 1. Detectar redirecciones en GitHub Pages usando parámetros en la URL (?redirect=...)
+    const urlParams = new URLSearchParams(window.location.search); // Obtener los parámetros
+    const redirectPath = urlParams.get('redirect'); // Leer el parámetro 'redirect'
+
+    let pageId: string;
+
+    if (redirectPath) {
+      // 2. Si hay redirección, procesar la URL para obtener el ID de la página
+      const segments = redirectPath.split('/');
+      pageId = segments[segments.length - 1] || 'pages-introduccion'; // Última parte de la ruta como ID
+    } else {
+      // 3. Si no hay redirección, usar el ID desde Angular Router (navegación interna)
+      pageId = this.route.snapshot.paramMap.get('id') || 'pages-introduccion';
+    }
+
+    // 4. Cargar el contenido HTML dinámico desde la carpeta de assets
+    const filePath = `/angular-tutorials/assets/content/${pageId}.html`; // Ruta fija para GitHub Pages
+
+    this.http.get(filePath, { responseType: 'text' }).subscribe(
+      (data) => {
+        this.content = this.sanitizer.bypassSecurityTrustHtml(data); // Sanitiza el contenido
+        setTimeout(() => {
+          this.generateTOC(); // Generar índice después de cargar el contenido
+          initFlowbite(); // Inicializar Flowbite para desplegables
+        }, 200);
+      },
+      (error) => {
+        this.content = '<p>Error al cargar el contenido.</p>'; // Manejar errores
+      }
+    );
+  }
     ngAfterViewInit(): void {
       // Intenta generar el índice nuevamente después de que Angular actualice la vista
       setTimeout(() => {
