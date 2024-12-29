@@ -1,0 +1,158 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+  >
+    CREACION DE UN PROYECTO
+  </h1>
+</header>
+<p class="lead">Creación de un Proyecto en Angular: Una Guía Paso a Paso</p>
+<p>
+  <strong>Angular</strong> es un framework de JavaScript de alto nivel,
+  respaldado por Google, que se utiliza para crear aplicaciones web de una sola
+  página (SPA). Para comenzar un nuevo proyecto en Angular, necesitarás la
+  <strong>Angular CLI</strong> (Command Line Interface).
+</p>
+<h2 id="seccion1">1. Instalación de Angular CLI</h2>
+<p>
+  Antes de comenzar, asegúrate de tener Node.js y npm (o yarn) instalados en tu
+  sistema. Luego, abre tu terminal o línea de comandos y ejecuta el siguiente
+  comando:
+</p>
+<p>Bash</p>
+<pre><code>npm install -g @angular/cli
+
+</code></pre>
+<p>Esto instalará globalmente la Angular CLI.</p>
+<h2 id="seccion2">2. Creación de un Nuevo Proyecto</h2>
+<p>
+  Una vez instalada la Angular CLI, puedes crear un nuevo proyecto de Angular
+  ejecutando el siguiente comando:
+</p>
+<p>Bash</p>
+<pre><code>ng new mi-proyecto
+
+</code></pre>
+<p>
+  Reemplaza <code>mi-proyecto</code> con el nombre que deseas asignarle a tu
+  proyecto. Se te pedirá que selecciones algunas opciones, como el estilo (CSS,
+  Sass, Less, Stylus) y si deseas incluir Angular Routing.
+</p>
+<h2 id="seccion3">3. Estructura del Proyecto</h2>
+<p>
+  Al finalizar la creación del proyecto, tendrás una estructura de directorios
+  similar a esta:
+</p>
+<pre><code>mi-proyecto/
+  e2e/
+  node_modules/
+  src/
+    app/
+      app.component.css
+      app.component.html
+      app.component.spec.ts
+      app.component.ts
+      app.module.ts
+    assets/
+    environments/
+    index.html
+    main.ts
+    styles.css
+    tsconfig.app.json
+    tsconfig.spec.json
+  .angular.cli.json
+  package.json
+  README.md
+  tsconfig.json
+
+</code></pre>
+<ul>
+  <li><strong>src:</strong> Contiene el código fuente de tu aplicación.</li>
+  <li>
+    <strong>app:</strong> Aquí se encuentran los componentes principales de tu
+    aplicación.
+  </li>
+  <li>
+    <strong>assets:</strong> Para almacenar archivos estáticos como imágenes,
+    fuentes, etc.
+  </li>
+  <li>
+    <strong>environments:</strong> Para configurar diferentes entornos
+    (desarrollo, producción).
+  </li>
+</ul>
+<h2 id="seccion4">4. Ejecutar la Aplicación</h2>
+<p>
+  Para ejecutar tu aplicación localmente, navega al directorio de tu proyecto y
+  ejecuta:
+</p>
+<p>Bash</p>
+<pre><code>cd mi-proyecto
+ng serve
+
+</code></pre>
+<p>
+  Esto iniciará un servidor de desarrollo local y abrirá tu aplicación en el
+  navegador por defecto (generalmente en
+  <a href="http://localhost:4200/">http://localhost:4200/</a>).
+</p>
+<h2 id="seccion5">5. Estructura Básica de un Componente</h2>
+<p>Un componente en Angular tiene tres partes principales:</p>
+<ul>
+  <li><strong>Template (HTML):</strong> Define la vista del componente.</li>
+  <li><strong>Style (CSS):</strong> Estiliza el componente.</li>
+  <li>
+    <strong>Logic (TypeScript):</strong> Contiene la lógica del componente.
+  </li>
+</ul>
+
+<p>TypeScript</p>
+<pre><code>// app.component.ts
+import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'mi-proyecto';
+}
+
+</code></pre>
+<p>HTML</p>
+<pre><code>&lt;h1&gt;{{ title }}&lt;/h1&gt;
+
+</code></pre>
+<h2 id="seccion6">6. Crear Nuevos Componentes</h2>
+<p>Para crear nuevos componentes, utiliza el siguiente comando:</p>
+<p>Bash</p>
+<pre><code>ng generate component my-component
+
+</code></pre>
+<p>
+  Esto creará un nuevo componente llamado <code>my-component</code> con sus
+  archivos correspondientes.
+</p>
+<h2 id="seccion7">Consideraciones Adicionales</h2>
+<ul>
+  <li>
+    <strong>Angular CLI:</strong> Te permite generar muchos otros elementos como
+    servicios, directivas, pipes, etc.
+  </li>
+  <li>
+    <strong>Módulos:</strong> Organizan tu aplicación en módulos, mejorando la
+    modularidad y la mantenibilidad.
+  </li>
+  <li>
+    <strong>Routing:</strong> Permite crear una aplicación de una sola página
+    con múltiples vistas.
+  </li>
+  <li>
+    <strong>Reactive Forms:</strong> Un poderoso mecanismo para manejar
+    formularios en Angular.
+  </li>
+  <li>
+    <strong>HTTP Client:</strong> Para realizar solicitudes HTTP a servidores
+    externos.
+  </li>
+</ul>

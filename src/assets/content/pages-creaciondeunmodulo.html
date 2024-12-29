@@ -1,0 +1,158 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+  >
+    CREACIÓN DE UN MÓDULO EN ANGULAR
+  </h1>
+</header>
+<h2 id="seccion1">Creación de un Módulo en Angular</h2>
+<h3 id="subseccion1-1">¿Qué es un Módulo en Angular?</h3>
+<p>
+  Un módulo en Angular es una unidad de organización del código que agrupa
+  componentes, directivas, pipes, servicios y otros módulos relacionados. Es una
+  forma de estructurar una aplicación de manera modular, facilitando la gestión,
+  el mantenimiento y la reutilización del código.
+</p>
+<h3 id="subseccion1-2">¿Por qué crear módulos?</h3>
+<ul>
+  <li>
+    <strong>Organización:</strong> Agrupa componentes relacionados en módulos
+    específicos.
+  </li>
+  <li>
+    <strong>Reutilización:</strong> Crea módulos que pueden ser reutilizados en
+    diferentes partes de la aplicación o incluso en otras aplicaciones.
+  </li>
+  <li>
+    <strong>Escalabilidad:</strong> Facilita la gestión de aplicaciones grandes
+    y complejas.
+  </li>
+  <li>
+    <strong>Encapsulación:</strong> Permite ocultar la implementación interna de
+    un módulo.
+  </li>
+</ul>
+<h3 id="subseccion1-3">Cómo Crear un Módulo</h3>
+<ol>
+  <li>
+    <p>
+      <strong>Generar el módulo:</strong> Utiliza la Angular CLI para generar un
+      nuevo módulo:
+    </p>
+    <p>Bash</p>
+    <pre><code>ng generate module nombre-del-modulo
+
+</code></pre>
+    <p>
+      Esto creará una carpeta con el nombre del módulo y un archivo
+      <code>nombre-del-modulo.module.ts</code>.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Definir el módulo:</strong> En el archivo
+      <code>nombre-del-modulo.module.ts</code>, verás una estructura similar a
+      esta:
+    </p>
+    <p>TypeScript</p>
+    <pre><code>import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { NombreDelModuloRoutingModule } from './nombre-del-modulo-routing.module';
+import { NombreDelComponenteComponent } from './nombre-del-componente/nombre-del-componente.component';
+
+@NgModule({
+  imports: [
+    CommonModule,
+    NombreDelModuloRoutingModule
+  ],
+  declarations: [
+    NombreDelComponenteComponent
+  ]
+})
+export class NombreDelModuloModule { }
+
+</code></pre>
+    <ul>
+      <li>
+        <strong><code>imports</code>:</strong> Aquí se declaran los módulos que
+        este módulo necesita. <code>CommonModule</code> es un módulo básico que
+        proporciona directivas comunes como <code>*ngIf</code> y
+        <code>*ngFor</code>.
+      </li>
+      <li>
+        <strong><code>declarations</code>:</strong> Aquí se declaran los
+        componentes, directivas y pipes que pertenecen a este módulo.
+      </li>
+      <li>
+        <strong><code>providers</code>:</strong> Aquí se declaran los servicios
+        que este módulo proporciona.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Importar el módulo en el AppModule:</strong></p>
+    <p>TypeScript</p>
+    <pre><code>// app.module.ts
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { NombreDelModuloModule } from './nombre-del-modulo/nombre-del-modulo.module';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    NombreDelModuloModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+
+</code></pre>
+  </li>
+</ol>
+<h2 id="seccion2">Ejemplo Práctico: Módulo de Usuarios</h2>
+<p>
+  Supongamos que queremos crear un módulo para gestionar usuarios. Podríamos
+  crear un módulo llamado <code>UsersModule</code> y dentro de él incluir
+  componentes como <code>UserListComponent</code>,
+  <code>UserDetailComponent</code> y un servicio <code>UserService</code>.
+</p>
+<h3 id="seccion3">Consideraciones Adicionales</h3>
+<ul>
+  <li>
+    <strong>Enrutamiento:</strong> Puedes crear un módulo de enrutamiento para
+    definir las rutas de los componentes dentro de un módulo.
+  </li>
+  <li>
+    <strong>Lazy Loading:</strong> Carga módulos de forma asíncrona para mejorar
+    el rendimiento de la aplicación, especialmente en aplicaciones grandes.
+  </li>
+  <li>
+    <strong>Compartir datos entre módulos:</strong> Utiliza servicios
+    compartidos para compartir datos entre diferentes módulos.
+  </li>
+</ul>
+<h2 id="seccion4">Ventajas de Usar Módulos</h2>
+<ul>
+  <li>
+    <strong>Mejor organización:</strong> Facilita la comprensión y el
+    mantenimiento del código.
+  </li>
+  <li><strong>Reutilización:</strong> Permite crear módulos reutilizables.</li>
+  <li>
+    <strong>Escalabilidad:</strong> Facilita la gestión de aplicaciones grandes
+    y complejas.
+  </li>
+  <li>
+    <strong>Pruebas:</strong> Permite realizar pruebas unitarias de forma más
+    aislada.
+  </li>
+</ul>

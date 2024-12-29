@@ -1,0 +1,141 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+  >
+    Rutas Hijas en Angular
+  </h1>
+</header>
+
+<p>
+  Las rutas hijas en Angular son una forma de organizar tu aplicación en una
+  jerarquía, permitiendo una navegación más profunda y una estructura más clara.
+  Son especialmente útiles para crear aplicaciones con múltiples niveles de
+  navegación, como una aplicación de comercio electrónico con categorías y
+  productos.
+</p>
+<h2 id="seccion1">¿Qué son las rutas hijas?</h2>
+<p>
+  Imagina que tienes una aplicación de una tienda en línea. La ruta principal
+  podría ser <code>/productos</code>. Dentro de esta ruta, puedes tener rutas
+  hijas como <code>/productos/electronica</code> y <code>/productos/ropa</code>.
+  Estas rutas hijas representan secciones más específicas dentro de la categoría
+  principal de “productos”.
+</p>
+<h2 id="seccion2">¿Cómo se crean?</h2>
+<ol>
+  <li>
+    <p><strong>Configuración de las rutas:</strong></p>
+    <ul>
+      <li>
+        <strong>Arreglo de rutas:</strong> En tu módulo, define un arreglo de
+        rutas. Dentro de este arreglo, puedes especificar rutas hijas utilizando
+        la propiedad <code>children</code>.
+      </li>
+      <li>
+        <strong>Ruta padre:</strong> La ruta que contiene las rutas hijas se
+        considera la ruta padre.
+      </li>
+    </ul>
+    <p>TypeScript</p>
+    <pre><code>const routes: Routes = [
+  {
+    path: 'productos',
+    component: ProductosComponent,
+    children: [
+      { path: 'electronica', component: ElectronicaComponent },
+      { path: 'ropa', component: RopaComponent }
+    ]
+  }
+];
+
+</code></pre>
+  </li>
+  <li>
+    <p><strong>Componente padre:</strong></p>
+    <ul>
+      <li>
+        <strong>RouterOutlet:</strong> En el componente padre, utiliza la
+        directiva <code>router-outlet</code> para mostrar el contenido de las
+        rutas hijas.
+      </li>
+      <li>
+        <strong>Enlaces:</strong> Crea enlaces a las rutas hijas utilizando el
+        routerLink.
+      </li>
+    </ul>
+    <p>HTML</p>
+    <pre><code>&lt;nav&gt;
+  &lt;a routerLink="electronica"&gt;Electrónica&lt;/a&gt;
+  &lt;a routerLink="ropa"&gt;Ropa&lt;/a&gt;
+&lt;/nav&gt;
+&lt;router-outlet&gt;&lt;/router-outlet&gt;
+
+</code></pre>
+  </li>
+</ol>
+<h2 id="seccion3">Ejemplo completo</h2>
+<p>TypeScript</p>
+<pre><code>// app.module.ts
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [
+  {
+    path: 'productos',
+    component: ProductosComponent,
+    children: [
+      { path: 'electronica', component: ElectronicaComponent },
+      { path: 'ropa', component: RopaComponent }
+    ]
+  }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppModule { }
+
+</code></pre>
+<h2 id="seccion4">Puntos clave a recordar</h2>
+<ul>
+  <li>
+    <strong>Ruta base:</strong> La ruta base de las rutas hijas es relativa a la
+    ruta padre.
+  </li>
+  <li>
+    <strong>RouterOutlet:</strong> Este elemento en el componente padre actúa
+    como un contenedor para mostrar el contenido de las rutas hijas.
+  </li>
+  <li>
+    <strong>Enlaces:</strong> Los enlaces a las rutas hijas se crean utilizando
+    el routerLink.
+  </li>
+  <li>
+    <strong>Parámetros de ruta:</strong> Puedes utilizar parámetros de ruta en
+    las rutas hijas para pasar datos dinámicos.
+  </li>
+  <li>
+    <strong>Guards:</strong> Los guards se pueden utilizar para proteger el
+    acceso a ciertas rutas hijas.
+  </li>
+</ul>
+<h2 id="seccion5">Beneficios de las rutas hijas</h2>
+<ul>
+  <li>
+    <strong>Organización:</strong> Ayuda a organizar tu aplicación en una
+    estructura jerárquica.
+  </li>
+  <li>
+    <strong>Reutilización:</strong> Puedes reutilizar componentes en diferentes
+    rutas hijas.
+  </li>
+  <li>
+    <strong>Navegación más profunda:</strong> Permite una navegación más
+    profunda y detallada dentro de tu aplicación.
+  </li>
+  <li>
+    <strong>Mejor experiencia de usuario:</strong> Ofrece una experiencia de
+    usuario más intuitiva y consistente.
+  </li>
+</ul>

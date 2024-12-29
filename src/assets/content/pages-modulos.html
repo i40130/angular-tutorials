@@ -1,0 +1,107 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+  >
+    MÓDULOS
+  </h1>
+</header>
+
+<p class="lead">
+  Los módulos en Angular son una pieza fundamental para la organización y
+  estructuración de tus aplicaciones. Son como contenedores que agrupan
+  componentes, servicios, directivas y otros artefactos relacionados, creando
+  bloques de funcionalidad cohesivos.
+</p>
+<h2 id="seccion2">¿Qué son los módulos en Angular?</h2>
+<p>
+  Un módulo en Angular es una clase TypeScript decorada con
+  <code>@NgModule</code> que define un contexto para un conjunto de
+  funcionalidades relacionadas. Es como un mini-aplicación dentro de una
+  aplicación más grande.
+</p>
+<h2 id="seccion3"><strong>¿Para qué sirven los módulos?</strong></h2>
+<ul>
+  <li>
+    <strong>Organización:</strong> Dividen la aplicación en partes más pequeñas
+    y manejables.
+  </li>
+  <li>
+    <strong>Reutilización:</strong> Permiten crear módulos reutilizables que
+    pueden ser importados en diferentes partes de la aplicación.
+  </li>
+  <li>
+    <strong>Carga perezosa:</strong> Los módulos pueden cargarse de forma
+    perezosa, lo que mejora el rendimiento de la aplicación, especialmente en
+    aplicaciones grandes.
+  </li>
+  <li>
+    <strong>Enrutamiento:</strong> Los módulos se utilizan para definir rutas y
+    navegar entre diferentes partes de la aplicación.
+  </li>
+</ul>
+<figure>
+  <img
+    src="https://miro.medium.com/v2/resize:fit:2024/0*vhyRJKW73Pu-JEAj."
+    alt="Modulos Angular"
+  />
+  <figcaption>Modulos Angular</figcaption>
+</figure>
+
+<h2 id="seccion4"><strong>Estructura básica de un módulo:</strong></h2>
+<p><strong>TypeScript</strong></p>
+<pre><code>import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { MiComponente } from './mi-componente';
+
+@NgModule({
+  declarations: [MiComponente],
+  imports: [CommonModule],
+  exports: [MiComponente]})
+export class MiModuloModule { }
+</code></pre>
+<ul>
+  <li>
+    <strong>declarations:</strong> Lista de componentes, directivas y pipes
+    declarados en este módulo.
+  </li>
+  <li>
+    <strong>imports:</strong> Lista de otros módulos que este módulo necesita
+    importar.
+  </li>
+  <li>
+    <strong>exports:</strong> Lista de declaraciones que este módulo exporta
+    para que puedan ser utilizados por otros módulos.
+  </li>
+</ul>
+<h2 id="seccion5"><strong>¿Cómo funcionan los módulos?</strong></h2>
+<ul>
+  <li>
+    <strong>Módulo raíz:</strong> Toda aplicación Angular tiene un módulo raíz,
+    que es el punto de entrada de la aplicación.
+  </li>
+  <li>
+    <strong>Módulos hijos:</strong> Los módulos hijos pueden importar otros
+    módulos y exportar sus componentes para que sean utilizados por otros
+    módulos.
+  </li>
+  <li>
+    <strong>Enrutamiento:</strong> Los módulos se utilizan para definir rutas y
+    cargar diferentes módulos de forma perezosa.
+  </li>
+</ul>
+<h2 id="seccion6"><strong>Ejemplo de un módulo con enrutamiento</strong></h2>
+<p><strong>TypeScript</strong></p>
+<pre><code>import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+
+const routes: Routes = [{ path: 'productos', loadChildren: () =&gt; import('./productos/productos.module').then(m =&gt; m.ProductosModule)}];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]})
+export class MiModuloRoutingModule { }
+</code></pre>
+<p>
+  En este ejemplo, el módulo <code>MiModuloRoutingModule</code> define una ruta
+  para cargar el módulo <code>ProductosModule</code> de forma perezosa.
+</p>

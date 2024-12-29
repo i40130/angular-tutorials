@@ -1,0 +1,124 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+  >
+    DATA BINDING
+  </h1>
+</header>
+<p class="lead">
+  El data binding es una de las características más poderosas de Angular,
+  permitiendo una sincronización fluida entre la vista (plantilla) y el modelo
+  (componente).
+</p>
+<h2 id="seccion1">
+  <strong>Data Binding en Angular: Un Puente entre la Vista y el Modelo</strong>
+</h2>
+<p>
+  El data binding es el mecanismo que permite a los componentes de Angular
+  comunicarse con sus plantillas. Gracias a él, podemos mostrar datos en la
+  vista, actualizarlos dinámicamente y responder a las acciones del usuario.
+</p>
+<h3 id="subseccion1-1"><strong>Tipos de Data Binding en Angular</strong></h3>
+<p>
+  Angular ofrece varios tipos de data binding para cubrir diferentes
+  necesidades:
+</p>
+<ul>
+  <li>
+    <p>
+      <strong>Interpolación:</strong> Se utiliza para mostrar el valor de una
+      propiedad del componente directamente en la plantilla. Se representa con
+      doble llaves <code>{{ }}</code>.
+    </p>
+    <p>
+      <strong>HTML</strong><br />
+      <code>&lt;p&gt;Hola, {{ nombre }}!&lt;/p&gt;</code>
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Property binding:</strong> Enlaza una propiedad del componente a
+      una propiedad de un elemento HTML. Se representa con corchetes
+      <code>[]</code>.
+    </p>
+    <p><strong>HTML</strong></p>
+    <p><code>&lt;input type="text" [value]="nombre"&gt;</code></p>
+  </li>
+  <li>
+    <p>
+      <strong>Event binding:</strong> Enlaza un evento de un elemento HTML a un
+      método del componente. Se representa con paréntesis <code>()</code>.
+    </p>
+    <p><strong>HTML</strong></p>
+    <pre><code> &lt;button (click)="saludar()"&gt;Saludar&lt;/button&gt;
+ 
+</code></pre>
+  </li>
+  <li>
+    <p>
+      <strong>Two-way binding:</strong> Combina property binding y event binding
+      para crear una sincronización bidireccional. Se representa con corchetes y
+      paréntesis <code>[( )]</code>.
+    </p>
+    <p><strong>HTML</strong></p>
+    <pre><code>&lt;input [(ngModel)]="nombre"&gt;
+  <figure><img src=" https://s3.amazonaws.com/angularminds.com/blog/media/data%20binding%20in%20angular-20241007123249034.png" alt="Two way data binding">
+    <figcaption>two way data binding</figcaption>
+</figure>
+ 
+</code></pre>
+  </li>
+</ul>
+<h2 id="seccion2">
+  <strong>¿Cómo funciona el data binding bajo el capó?</strong>
+</h2>
+<p>
+  Angular utiliza un sistema de detección de cambios para mantener sincronizada
+  la vista y el modelo. Cuando una propiedad del componente cambia, Angular
+  detecta este cambio y actualiza la vista en consecuencia.
+</p>
+<p><strong>Ejemplo de data binding bidireccional con ngModel:</strong></p>
+<p><strong>TypeScript</strong></p>
+<pre><code>import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-mi-componente',
+  template: `
+    &lt;input [(ngModel)]="nombre"&gt;
+    &lt;p&gt;Hola, {{ nombre }}!&lt;/p&gt;
+  `
+})
+export class MiComponenteComponent {
+  nombre = 'Mundo';
+}
+
+</code></pre>
+<p>En este ejemplo:</p>
+<ul>
+  <li>
+    <code>[(ngModel)]="nombre"</code> crea un enlace bidireccional entre el
+    input y la propiedad <code>nombre</code> del componente.
+  </li>
+  <li>
+    Cualquier cambio en el valor del input actualizará automáticamente la
+    propiedad <code>nombre</code> y viceversa.
+  </li>
+</ul>
+<h2 id="seccion3"><strong>Consideraciones importantes</strong></h2>
+<ul>
+  <li>
+    <strong>Performance:</strong> Un exceso de data binding puede afectar el
+    rendimiento de la aplicación. Es importante utilizar el data binding de
+    forma eficiente.
+  </li>
+  <li>
+    <strong>Detección de cambios:</strong> Angular utiliza un sistema de
+    detección de cambios para actualizar la vista. Comprender cómo funciona este
+    sistema es clave para optimizar el rendimiento.
+  </li>
+  <li>
+    <strong>Directivas:</strong> Las directivas como <code>*ngIf</code> y
+    <code>*ngFor</code> también utilizan el data binding para controlar la
+    visibilidad de elementos y la iteración sobre colecciones.
+  </li>
+</ul>

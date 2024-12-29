@@ -1,0 +1,109 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+  >
+    RUTAS
+  </h1>
+</header>
+
+<p class="lead">
+  Las rutas en Angular son fundamentales para crear aplicaciones de una sola
+  página (SPA) dinámicas y navegables. Permiten que los usuarios se muevan entre
+  diferentes vistas de nuestra aplicación sin realizar recargas completas de
+  página.
+</p>
+<h2 id="seccion1"><strong>¿Qué son las rutas en Angular?</strong></h2>
+<p>
+  Las rutas en Angular establecen una correspondencia entre las URL y los
+  componentes de nuestra aplicación. Es decir, cada URL se asocia a un
+  componente específico que se mostrará en la pantalla cuando el usuario navega
+  a esa URL.
+</p>
+<h2 id="¿cómo-funcionan-las-rutas-en-angular">
+  <strong>¿Cómo funcionan las rutas en Angular?</strong>
+</h2>
+<ol>
+  <li>
+    <strong>Configuración de las rutas:</strong> Se define un arreglo de objetos
+    de configuración de rutas, donde cada objeto representa una ruta.
+  </li>
+  <li>
+    <strong>Módulo de enrutamiento:</strong> Este módulo se importa en el módulo
+    principal de la aplicación y se configura con el arreglo de rutas.
+  </li>
+  <li>
+    <strong>RouterOutlet:</strong> Este elemento en un componente actúa como un
+    contenedor para mostrar el componente asociado a la ruta activa.
+  </li>
+  <li>
+    <strong>Navegación:</strong> Los usuarios pueden navegar entre las rutas
+    haciendo clic en enlaces o utilizando el programador de la aplicación.
+  </li>
+</ol>
+<figure>
+  <img
+    src="https://misovirtual.virtual.uniandes.edu.co/codelabs/angular-routing/img/318ca712573cd19d.png"
+    alt="Rutas en Angular"
+  />
+  <figcaption>Rutas en Angular</figcaption>
+</figure>
+<h2 id="seccion2">Ejemplo básico:</h2>
+<p><strong>TypeScript</strong></p>
+<pre><code>// app-routing.module.ts
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'about', component: AboutComponent }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+
+</code></pre>
+<p><strong>HTML</strong></p>
+<pre><code>&lt;nav&gt;
+  &lt;a routerLink="/"&gt;Home&lt;/a&gt;
+  &lt;a routerLink="/about"&gt;About&lt;/a&gt;
+&lt;/nav&gt;
+&lt;router-outlet&gt;&lt;/router-outlet&gt;
+
+</code></pre>
+<p>En este ejemplo:</p>
+<ul>
+  <li>
+    Se definen dos rutas: una para la página de inicio (<code>/</code>) y otra
+    para la página “Acerca de” (<code>/about</code>).
+  </li>
+  <li>Cada ruta se asocia a un componente específico.</li>
+  <li>
+    El <code>router-outlet</code> en el componente principal mostrará el
+    componente correspondiente a la ruta activa.
+  </li>
+</ul>
+<h2 id="seccion3"><strong>Conceptos clave adicionales:</strong></h2>
+<ul>
+  <li>
+    <strong>Rutas hijas:</strong> Permiten crear jerarquías de rutas, lo que es
+    útil para organizar aplicaciones grandes.
+  </li>
+  <li>
+    <strong>Parámetros de ruta:</strong> Se utilizan para pasar datos dinámicos
+    a los componentes.
+  </li>
+  <li>
+    <strong>Guards:</strong> Protegen rutas, permitiendo o denegando el acceso
+    según ciertas condiciones.
+  </li>
+  <li>
+    <strong>Lazy loading:</strong> Carga módulos de forma diferida, mejorando el
+    rendimiento de la aplicación.
+  </li>
+</ul>
+

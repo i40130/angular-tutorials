@@ -24,5 +24,10 @@ export const routes: Routes = [
   {
     path: 'angular-v19',
     loadComponent: () => import('./pages/en-construccion/en-construccion.component').then(m => m.EnConstruccionComponent)
+  },
+  // Ruta comodín para manejar Page Not Found
+  {
+    path: '**',
+    loadComponent: () => import('./pages/page-not-found/page-not-found.component').then(m => m.PageNotFoundComponent)
   }
 ];

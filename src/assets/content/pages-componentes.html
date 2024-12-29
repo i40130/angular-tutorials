@@ -1,0 +1,119 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+  >
+    COMPONENTES
+  </h1>
+</header>
+
+<p class="lead">
+  Los componentes son el pilar fundamental de las aplicaciones Angular. Son como
+  pequeños bloques de construcción que se combinan para formar la interfaz de
+  usuario.
+</p>
+<h2 id="seccion1">¿Qué es un componente en Angular?</h2>
+<p>Un componente en Angular es una clase de TypeScript que encapsula:</p>
+<ul>
+  <li>
+    <strong>Una plantilla HTML</strong>: Define la estructura visual del
+    componente.
+  </li>
+  <li>
+    <strong>Un estilo CSS:</strong> Personaliza la apariencia del componente.
+  </li>
+  <li>
+    <strong>Lógica de negocio</strong>: Maneja los datos, eventos y la
+    interacción del usuario.
+  </li>
+</ul>
+<figure><img src="https://flowbite.s3.amazonaws.com/typography-plugin/typography-image-2.png" alt="">
+    <figcaption>Digital art by Anonymous</figcaption>
+</figure>
+<h2 id="seccion2">¿Para qué sirven los componentes?</h2>
+<ul>
+  <li>
+    <strong>Reutilización</strong>: Un componente puede ser utilizado en
+    múltiples lugares de la aplicación, lo que reduce la duplicación de código.
+  </li>
+  <li>
+    <strong>Modularidad</strong>: Cada componente se encarga de una parte
+    específica de la interfaz, lo que facilita el desarrollo y mantenimiento.
+  </li>
+  <li>
+    <strong>Encapsulación</strong>: La lógica de un componente está aislada de
+    otros componentes, lo que mejora la organización del código.
+  </li>
+  <li>
+    <strong>Testabilidad</strong>: Los componentes son más fáciles de probar de
+    forma aislada.
+  </li>
+</ul>
+<h2 id="seccion3">Estructura básica de un componente</h2>
+<p>A nivel de archivo un componente está formado por:</p>
+<ul>
+  <li>Archivo HTML (estructura)</li>
+  <li>Archivo CSS (estilos y diseño)</li>
+  <li>Archivo TS (typescript - funcionalidad)</li>
+  <li>Archivo .SPEC.TS (testing)</li>
+</ul>
+<p><strong>TypeScript</strong></p>
+<pre><code>// mi-componente.component.ts
+import { Component } from '@angular/core';
+@Component({
+selector: 'app-mi-componente',
+template: `&lt;p&gt;Hola, mundo desde un componente!/p&gt;`,
+styles: [`p {color: blue;} `]
+})
+export class MiComponenteComponent {}
+</code></pre>
+<p>
+  <strong>selector</strong>: El nombre que se utilizará en las plantillas HTML
+  para referenciar al componente.<br />
+  <strong>templateUrl</strong>: La ruta al archivo HTML que contiene la
+  plantilla del componente.<br />
+  <strong>styleUrls</strong>: Un arreglo de rutas a los archivos CSS que
+  contienen los estilos del componente.
+</p>
+<p>Ejemplo de un componente simple:</p>
+<p><strong>TypeScript</strong></p>
+<pre><code>// mi-componente.component.ts
+import { Component } from '@angular/core';
+@Component({
+selector: 'app-mi-componente',
+template: `&lt;p&gt;Hola, mundo desde un componente!&lt;/p&gt;`,
+styles: [`p {color: blue;}`]
+    })
+export class MiComponenteComponent {}
+</code></pre>
+<p><strong>HTML</strong></p>
+<pre><code>&lt;app-mi-componente&gt;&lt;/app-mi-componente&gt;
+</code></pre>
+<h2 id="seccion4">Características clave de los componentes</h2>
+<ul>
+  <li>
+    <p>
+      <strong>Entrada y salida de datos</strong>: Los componentes pueden recibir
+      datos desde otros componentes mediante propiedades de entrada (@Input) y
+      enviar datos a otros componentes mediante eventos de salida (@Output).
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Ciclos de vida</strong>: Los componentes tienen un ciclo de vida
+      que define las diferentes etapas por las que pasan desde su creación hasta
+      su destrucción.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Directivas</strong>: Los componentes pueden utilizar directivas
+      para modificar el comportamiento de los elementos del DOM.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Servicios</strong>: Los componentes pueden inyectar servicios para
+      acceder a datos o realizar tareas comunes.
+    </p>
+  </li>
+</ul>

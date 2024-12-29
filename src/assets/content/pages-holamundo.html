@@ -1,0 +1,271 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+  >
+    Hello World APP
+  </h1>
+</header>
+<p class="lead">
+  Tutorial para una aplicación “Hola Mundo” en Angular, explicando cada paso y
+  concepto clave.
+</p>
+<h2 id="seccion1">Requisitos previos</h2>
+<ol>
+  <li>
+    <p><strong>Node.js y npm (o yarn):</strong></p>
+    <ul>
+      <li>
+        <strong>Node.js:</strong> Descarga la versión LTS (Long Term Support)
+        desde
+        <a
+          href="https://www.google.com/url?sa=E&amp;source=gmail&amp;q=https://nodejs.org/"
+          >https://nodejs.org/</a
+        >. La versión LTS ofrece mayor estabilidad. Una vez instalado, abre tu
+        terminal y ejecuta <code>node -v</code> y <code>npm -v</code> para
+        verificar las versiones.
+      </li>
+      <li>
+        <strong>npm (Node Package Manager):</strong> Se instala automáticamente
+        con Node.js. Es el gestor de paquetes que usaremos para instalar Angular
+        CLI y otras dependencias.
+      </li>
+      <li>
+        <strong>yarn (alternativa a npm):</strong> Si prefieres usar yarn,
+        puedes instalarlo globalmente con <code>npm install -g yarn</code>. Los
+        comandos serán similares a npm, pero con <code>yarn add</code> en lugar
+        de <code>npm install</code>.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Un editor de código (recomendaciones y extensiones):</strong></p>
+    <ul>
+      <li>
+        <strong>Visual Studio Code (VS Code):</strong> Recomendado por su gran
+        soporte para Angular. Descárgalo desde
+        <a
+          href="https://www.google.com/url?sa=E&amp;source=gmail&amp;q=https://code.visualstudio.com/"
+          >https://code.visualstudio.com/</a
+        >.
+      </li>
+      <li>
+        <strong>Extensiones recomendadas para VS Code:</strong>
+        <ul>
+          <li>
+            <strong>Angular Language Service:</strong> Proporciona
+            autocompletado, detección de errores y navegación para código
+            Angular.
+          </li>
+          <li>
+            <strong
+              >TSLint (o ESLint con configuración para TypeScript):</strong
+            >
+            Para el análisis estático de código y el cumplimiento de estándares.
+          </li>
+          <li>
+            <strong>Prettier - Code formatter:</strong> Para formatear el código
+            automáticamente y mantener un estilo consistente.
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+</ol>
+<h2 id="seccion2">Pasos</h2>
+<ol>
+  <li>
+    <p>
+      <strong>Instalar Angular CLI (Interfaz de Línea de Comandos):</strong>
+    </p>
+    <ul>
+      <li>
+        Abre tu terminal o línea de comandos (en Windows, puedes usar PowerShell
+        o la Terminal de Windows).
+      </li>
+      <li>Ejecuta: <code>npm install -g @angular/cli</code></li>
+      <li>
+        El flag <code>-g</code> (global) instala Angular CLI para que esté
+        disponible en cualquier directorio de tu sistema.
+      </li>
+      <li>
+        Para verificar la instalación, ejecuta <code>ng version</code>. Deberías
+        ver información sobre la versión de Angular CLI y otras dependencias.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Crear un nuevo proyecto Angular:</strong></p>
+    <ul>
+      <li>
+        Navega a la carpeta donde quieres crear tu proyecto usando el comando
+        <code>cd</code> (change directory). Por ejemplo:
+        <code>cd Documentos/Proyectos</code>.
+      </li>
+      <li>Ejecuta: <code>ng new hola-mundo</code></li>
+      <li>
+        <code>hola-mundo</code> es el nombre del proyecto. (Puedes cambiarlo).
+      </li>
+      <li>
+        <strong>Preguntas de Angular CLI durante la creación:</strong>
+        <ul>
+          <li>
+            <strong>Would you like to add Angular routing?:</strong> Para este
+            ejemplo, selecciona “No”. El enrutamiento se utiliza para la
+            navegación entre diferentes páginas dentro de la aplicación.
+          </li>
+          <li>
+            <strong>Which stylesheet format would you like to use?:</strong>
+            Selecciona “CSS”. Hay otras opciones como SCSS, Sass y Less, que son
+            preprocesadores de CSS que ofrecen características adicionales.
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Navegar al directorio del proyecto:</strong></p>
+    <ul>
+      <li>Ejecuta: <code>cd hola-mundo</code></li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Ejecutar la aplicación:</strong></p>
+    <ul>
+      <li>Ejecuta: <code>ng serve --open</code></li>
+      <li>
+        <code>ng serve</code> compila la aplicación y la sirve en un servidor de
+        desarrollo local.
+      </li>
+      <li>
+        <code>--open</code> abre automáticamente la aplicación en tu navegador
+        predeterminado.
+      </li>
+      <li>
+        La aplicación estará disponible en <code>http://localhost:4200/</code>.
+        Si el puerto 4200 está en uso, Angular CLI buscará automáticamente otro
+        puerto disponible.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Modificar el componente principal:</strong></p>
+    <ul>
+      <li>
+        Abre el archivo <code>src/app/app.component.html</code> en tu editor de
+        código.
+      </li>
+      <li>
+        <strong>Estructura básica de un componente Angular:</strong> Un
+        componente en Angular se compone de:
+        <ul>
+          <li>
+            <strong>Template (HTML):</strong> Define la vista del componente (el
+            HTML que se muestra en el navegador).
+            <code>app.component.html</code>
+          </li>
+          <li>
+            <strong>Clase (TypeScript):</strong> Contiene la lógica del
+            componente (datos y métodos). <code>app.component.ts</code>
+          </li>
+          <li>
+            <strong>Estilos (CSS/SCSS/etc.):</strong> Define los estilos
+            visuales del componente. <code>app.component.css</code> (o el
+            formato que hayas elegido)
+          </li>
+        </ul>
+      </li>
+      <li>Reemplaza el contenido de <code>app.component.html</code> con:</li>
+    </ul>
+    <p>HTML</p>
+    <pre><code>&lt;h1&gt;{{ title }}&lt;/h1&gt;
+&lt;p&gt;¡Hola Mundo desde Angular!&lt;/p&gt;
+
+</code></pre>
+    <ul>
+      <li>Abre el archivo <code>src/app/app.component.ts</code>.</li>
+      <li>
+        Modifica la clase <code>AppComponent</code> para agregar una propiedad
+        <code>title</code>:
+      </li>
+    </ul>
+    <!-- end list -->
+    <p>TypeScript</p>
+    <pre><code>import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  title = 'Mi primera app en Angular';
+}
+
+</code></pre>
+    <ul>
+      <li>
+        <code>{{ title }}</code> en el template se llama <em>interpolación</em>.
+        Muestra el valor de la propiedad <code>title</code> de la clase
+        <code>AppComponent</code>.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>
+      <strong>Guardar los cambios:</strong> Guarda ambos archivos. El navegador
+      se actualizará automáticamente mostrando “Mi primera app en Angular” como
+      título y “¡Hola Mundo desde Angular!” como párrafo.
+    </p>
+  </li>
+</ol>
+<h2 id="seccion3">
+  Explicación de archivos y conceptos clave (por si no conoces Angular y te has
+  saltado la primera parte de este tutorial)
+</h2>
+<ul>
+  <li>
+    <strong><code>src/app/app.component.html</code>:</strong> La plantilla HTML
+    del componente raíz.
+  </li>
+  <li>
+    <strong><code>src/app/app.component.ts</code>:</strong> La clase del
+    componente raíz, donde se define la lógica y los datos.
+  </li>
+  <li>
+    <strong><code>src/app/app.module.ts</code>:</strong> El módulo raíz de la
+    aplicación. Declara los componentes que pertenecen a este módulo.
+  </li>
+  <li>
+    <strong><code>main.ts</code>:</strong> El punto de entrada principal de la
+    aplicación. Arranca el módulo raíz (<code>AppModule</code>).
+  </li>
+  <li>
+    <strong><code>index.html</code>:</strong> El archivo HTML principal que
+    carga la aplicación Angular. Contiene la etiqueta
+    <code>&lt;app-root&gt;</code>, que es el selector del componente raíz.
+  </li>
+  <li>
+    <strong><code>angular.json</code>:</strong> Archivo de configuración del
+    proyecto Angular.
+  </li>
+  <li>
+    <strong><code>package.json</code>:</strong> Archivo que contiene información
+    sobre el proyecto y sus dependencias (paquetes npm).
+  </li>
+  <li>
+    <strong>Componentes:</strong> Son los bloques de construcción fundamentales
+    de las aplicaciones Angular. Encapsulan la lógica, la vista y los estilos.
+  </li>
+  <li>
+    <strong>Directivas:</strong> Permiten modificar el DOM (Document Object
+    Model) de diferentes maneras.
+  </li>
+  <li>
+    <strong>Servicios:</strong> Clases que encapsulan la lógica de negocio y se
+    pueden inyectar en los componentes.
+  </li>
+  <li>
+    <strong>Módulos:</strong> Agrupan componentes, directivas y servicios
+    relacionados.
+  </li>
+</ul>

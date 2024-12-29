@@ -1,0 +1,233 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+  >
+    CREACIÓN DE TEMPLATES
+  </h1>
+</header>
+<h2 id="seccion1">Templates</h2>
+<p>
+  La creación de templates en Angular es un aspecto fundamental del desarrollo
+  frontend. Siguiendo estas mejores prácticas, podrás crear templates más
+  limpios, mantenibles y eficientes:
+</p>
+<h3 id="subseccion1-1">Organización y Estructura</h3>
+<ul>
+  <li>
+    <strong>Componentes pequeños y enfocados:</strong> Cada componente debe
+    tener una responsabilidad clara y un template conciso.
+  </li>
+  <li>
+    <strong>Jerarquía de componentes:</strong> Organiza tus componentes en una
+    jerarquía lógica para facilitar la comprensión y el mantenimiento.
+  </li>
+  <li>
+    <strong>Convenciones de nombrado:</strong> Utiliza nombres claros y
+    descriptivos para tus componentes y elementos del template.
+  </li>
+</ul>
+<h3 id="subseccion1-2">Legibilidad y Mantenimiento</h3>
+<ul>
+  <li>
+    <strong>Indentación y formato:</strong> Utiliza una indentación consistente
+    para mejorar la legibilidad.
+  </li>
+  <li>
+    <strong>Comentarios:</strong> Añade comentarios concisos para explicar
+    secciones complejas del template.
+  </li>
+  <li>
+    <strong>Evita el anidamiento excesivo:</strong> Un anidamiento profundo
+    puede dificultar la lectura y el mantenimiento.
+  </li>
+</ul>
+<h3 id="subseccion1-3">Rendimiento</h3>
+<ul>
+  <li>
+    <strong>Minimiza el DOM:</strong> Utiliza directivas estructurales como
+    <code>*ngIf</code> y <code>*ngFor</code> de manera eficiente para evitar
+    renderizar elementos innecesarios.
+  </li>
+  <li>
+    <strong>Evita expresiones complejas:</strong> Las expresiones complejas
+    pueden afectar el rendimiento. Utiliza pipes o métodos en el componente para
+    realizar cálculos complejos.
+  </li>
+  <li>
+    <strong>Optimiza el cambio de detección:</strong> Utiliza
+    <code>OnPush</code> en los componentes para que Angular solo verifique
+    cambios cuando las entradas cambian.
+  </li>
+</ul>
+<h3 id="subseccion1-4">Prácticas Adicionales</h3>
+<ul>
+  <li>
+    <strong>Utiliza pipes para formatear datos:</strong> Los pipes permiten
+    transformar datos antes de mostrarlos en la plantilla.
+  </li>
+  <li>
+    <strong>Aprovecha las directivas estructurales y atributivas:</strong> Estas
+    directivas ofrecen una forma concisa de controlar la apariencia y el
+    comportamiento de los elementos.
+  </li>
+  <li>
+    <strong>Considera la accesibilidad:</strong> Asegúrate de que tus templates
+    sean accesibles para todos los usuarios, utilizando atributos como
+    <code>aria-label</code> y <code>aria-describedby</code>.
+  </li>
+  <li>
+    <strong>Utiliza un linter:</strong> Un linter te ayudará a mantener un
+    código limpio y consistente.
+  </li>
+</ul>
+<h3 id="subseccion1-5">Ejemplos</h3>
+<ul>
+  <li><strong>Template conciso y legible:</strong></li>
+</ul>
+<p>HTML</p>
+<pre><code>&lt;div *ngIf="isLoading"&gt;Cargando...&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li *ngFor="let item of items"&gt;{{ item }}&lt;/li&gt;
+&lt;/ul&gt;
+
+</code></pre>
+<ul>
+  <li><strong>Uso de pipes:</strong></li>
+</ul>
+<!-- end list -->
+<p>HTML</p>
+<pre><code>{{ date | date:'medium' }}
+
+</code></pre>
+<ul>
+  <li>
+    <strong>Aplicación de estilos con <code>ngClass</code>:</strong>
+  </li>
+</ul>
+<!-- end list -->
+<p>HTML</p>
+<pre><code>&lt;button [ngClass]="{'btn-primary': isPrimary, 'btn-danger': isDanger}"&gt;
+  Click me
+&lt;/button&gt;
+
+</code></pre>
+<h2 id="seccion2">Optimización de templates</h2>
+<p>
+  La optimización de templates en Angular es crucial para garantizar un
+  rendimiento óptimo de nuestras aplicaciones. Un template bien optimizado no
+  solo mejora la velocidad de carga, sino también la experiencia del usuario al
+  reducir la latencia y mejorar la interactividad.
+</p>
+<h3 id="subseccion2-1">¿Por qué es importante optimizar los templates?</h3>
+<ul>
+  <li>
+    <strong>Mejor rendimiento:</strong> Menos tiempo de carga, menor consumo de
+    recursos.
+  </li>
+  <li>
+    <strong>Mejor experiencia de usuario:</strong> Interfaz más responsiva y
+    suave.
+  </li>
+  <li>
+    <strong>Mantenimiento más fácil:</strong> Códigos más limpios y fáciles de
+    entender.
+  </li>
+</ul>
+<h3 id="subseccion2-2">Estrategias de Optimización</h3>
+<ol>
+  <li><strong>Minimizar el DOM:</strong></li>
+</ol>
+<ul>
+  <li>
+    <strong>Utilizar directivas estructurales:</strong> <code>*ngIf</code>,
+    <code>*ngFor</code> y <code>*ngSwitch</code> para mostrar o ocultar
+    elementos según sea necesario.
+  </li>
+  <li>
+    <strong>Evitar anidar elementos innecesariamente:</strong> Una estructura
+    DOM plana mejora el rendimiento.
+  </li>
+  <li>
+    <strong>Utilizar componentes para encapsular la lógica:</strong> Divide la
+    interfaz de usuario en componentes más pequeños y reutilizables.
+  </li>
+</ul>
+<ol start="2">
+  <li><strong>Optimizar la detección de cambios:</strong></li>
+</ol>
+<ul>
+  <li>
+    <strong>OnPush:</strong> Configura los componentes para que Angular solo
+    verifique los cambios cuando sus entradas cambian.
+  </li>
+  <li>
+    <strong>Evitar expresiones complejas:</strong> Las expresiones complejas en
+    los templates pueden ralentizar la detección de cambios.
+  </li>
+  <li>
+    <strong>Utilizar pipes:</strong> Los pipes permiten transformar datos sin
+    afectar la detección de cambios.
+  </li>
+</ul>
+<ol start="3">
+  <li><strong>Minimizar el número de bindings:</strong></li>
+</ol>
+<ul>
+  <li>
+    <strong>Reducir el número de propiedades enlazadas:</strong> Solo enlaza las
+    propiedades que realmente necesitan ser actualizadas.
+  </li>
+  <li>
+    <strong>Utilizar <code>trackBy</code> con <code>*ngFor</code>:</strong>
+    Mejora el rendimiento de <code>*ngFor</code> cuando se trabaja con listas
+    grandes.
+  </li>
+</ul>
+<h3 id="subseccion2-3">
+  4. <strong>Utilizar herramientas de profiling</strong>
+</h3>
+<ul>
+  <li>
+    <strong>Angular DevTools:</strong> Identifica los cuellos de botella en tu
+    aplicación.
+  </li>
+  <li>
+    <strong>Chrome DevTools:</strong> Analiza el rendimiento de tu aplicación.
+  </li>
+</ul>
+<ol start="5">
+  <li><strong>Consideraciones adicionales:</strong></li>
+</ol>
+<ul>
+  <li>
+    <strong>Evitar el uso excesivo de <code>*ngContent</code>:</strong> La
+    proyección de contenido puede ser costosa en términos de rendimiento.
+  </li>
+  <li>
+    <strong>Minimizar el uso de estilos en línea:</strong> Los estilos en línea
+    pueden dificultar la comprensión y el mantenimiento del código.
+  </li>
+  <li>
+    <strong>Utilizar componentes puros:</strong> Los componentes puros son
+    ideales para mostrar datos sin interactuar con ellos.
+  </li>
+</ul>
+<h3 id="subseccion2-4">Ejemplo Práctico</h3>
+<p>HTML</p>
+<pre><code>&lt;div *ngFor="let item of items; trackBy: trackById"&gt;
+  &lt;span&gt;{{ item.name }}&lt;/span&gt;
+  &lt;div *ngIf="item.isActive"&gt;Activo&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;ng-container *ngFor="let item of items; trackBy: trackById"&gt;
+  &lt;div *ngIf="item.isActive" class="active-item"&gt;
+    {{ item.name }}
+  &lt;/div&gt;
+&lt;/ng-container&gt;
+
+</code></pre>
+<p>
+  En este ejemplo, se ha utilizado <code>ng-container</code> para evitar crear
+  elementos div innecesarios y se ha combinado la lógica del
+  <code>*ngIf</code> con una clase CSS para mejorar la eficiencia.
+</p>

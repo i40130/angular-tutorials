@@ -24,7 +24,7 @@ export class ContentTutorialComponent implements OnInit {
   ngOnInit(): void {
     // Suscribirse a los cambios en los parámetros de la ruta (para detectar cambios dinámicos)
     this.routeSub = this.route.paramMap.subscribe((params) => {
-      const pageId = params.get('id') || 'pages-settings'; // Obtener el parámetro dinámico
+      const pageId = params.get('id') || 'pages-introduccion'; // Obtener el parámetro dinámico
 
       // Ruta del archivo HTML externo basado en el ID
       const filePath = `/assets/content/${pageId}.html`;
