@@ -49,35 +49,42 @@ export class ContentTutorialComponent implements OnInit {
 
   ngOnInit(): void {
     // 1. Detectar redirecciones en GitHub Pages usando parámetros en la URL (?redirect=...)
-    const urlParams = new URLSearchParams(window.location.search); // Obtener los parámetros
+    const urlParams = new URLSearchParams(window.location.search); // Obtener parámetros
     const redirectPath = urlParams.get('redirect'); // Leer el parámetro 'redirect'
 
-    let pageId: string;
+    // 2. Suscribirse a los cambios dinámicos en los parámetros de la URL
+    this.routeSub = this.route.paramMap.subscribe((params) => {
+      let pageId: string;
 
-    if (redirectPath) {
-      // 2. Si hay redirección, procesar la URL para obtener el ID de la página
-      const segments = redirectPath.split('/');
-      pageId = segments[segments.length - 1] || 'pages-introduccion'; // Última parte de la ruta como ID
-    } else {
-      // 3. Si no hay redirección, usar el ID desde Angular Router (navegación interna)
-      pageId = this.route.snapshot.paramMap.get('id') || 'pages-introduccion';
-    }
-
-    // 4. Cargar el contenido HTML dinámico desde la carpeta de assets
-    const filePath = `/angular-tutorials/assets/content/${pageId}.html`; // Ruta fija para GitHub Pages
-
-    this.http.get(filePath, { responseType: 'text' }).subscribe(
-      (data) => {
-        this.content = this.sanitizer.bypassSecurityTrustHtml(data); // Sanitiza el contenido
-        setTimeout(() => {
-          this.generateTOC(); // Generar índice después de cargar el contenido
-          initFlowbite(); // Inicializar Flowbite para desplegables
-        }, 200);
-      },
-      (error) => {
-        this.content = '<p>Error al cargar el contenido.</p>'; // Manejar errores
+      if (redirectPath) {
+        // Si hay redirección desde GitHub Pages
+        const segments = redirectPath.split('/');
+        pageId = segments[segments.length - 1] || 'pages-introduccion'; // Última parte de la ruta
+      } else {
+        // Si no hay redirección, usa el parámetro dinámico de Angular
+        pageId = params.get('id') || 'pages-introduccion';
       }
-    );
+
+      console.log('Cargando página:', pageId); // DEBUG para confirmar la página cargada
+
+      // 3. Construir la ruta para cargar el archivo HTML
+      const filePath = `${window.location.origin}/angular-tutorials/assets/content/${pageId}.html`;
+
+      // 4. Cargar el contenido HTML dinámico
+      this.http.get(filePath, { responseType: 'text' }).subscribe(
+        (data) => {
+          this.content = this.sanitizer.bypassSecurityTrustHtml(data); // Sanitiza el contenido
+          setTimeout(() => {
+            this.generateTOC(); // Generar el índice dinámico
+            initFlowbite(); // Reinicializar Flowbite
+          }, 200);
+        },
+        (error) => {
+          console.error('Error al cargar contenido:', error); // DEBUG
+          this.content = '<p>Error al cargar el contenido.</p>'; // Manejar errores
+        }
+      );
+    });
   }
     ngAfterViewInit(): void {
       // Intenta generar el índice nuevamente después de que Angular actualice la vista

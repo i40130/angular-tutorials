@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta http-equiv="refresh" content="0; URL='/angular-tutorials/index.html?redirect=' + window.location.pathname" />
+    <script>
+      var path = window.location.pathname;
+      var redirect = '/angular-tutorials/index.html#' + path;
+      window.location.replace(redirect);
+    </script>
   </head>
   <body></body>
-</html><!DOCTYPE html>
-<html>
-  <head>
-    <meta http-equiv="refresh" content="0; URL='/'" />
-  </head>
 </html>
