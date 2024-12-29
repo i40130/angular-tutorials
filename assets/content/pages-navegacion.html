@@ -1,0 +1,122 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+  >
+    NAVEGACIÓN
+  </h1>
+</header>
+
+<p class="lead">
+  La navegación en una Single Page Application (SPA) es un aspecto fundamental
+  que define su experiencia de usuario. A diferencia de las aplicaciones web
+  tradicionales donde cada clic en un enlace carga una nueva página completa, en
+  una SPA el contenido se carga dinámicamente sin recargar la página, lo que
+  proporciona una experiencia más fluida y rápida.
+</p>
+<h2 id="seccion1"><strong>¿Cómo funciona la navegación en una SPA?</strong></h2>
+<ol>
+  <li>
+    <p><strong>Ruta Inicial:</strong></p>
+    <ul>
+      <li>
+        Cuando un usuario accede a una SPA, se carga una única página HTML
+        inicial que contiene el esqueleto de la aplicación.
+      </li>
+      <li>
+        Esta página inicial suele tener un elemento contenedor donde se
+        renderizarán los diferentes componentes según la ruta.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Enrutamiento:</strong></p>
+    <ul>
+      <li>
+        Angular utiliza un módulo de enrutamiento para gestionar la navegación
+        entre diferentes vistas o componentes.
+      </li>
+      <li>
+        Cuando el usuario hace clic en un enlace o interactúa con un elemento
+        que desencadena una navegación, el enrutador de Angular intercepta la
+        solicitud y actualiza la URL en el navegador sin realizar una recarga
+        completa de la página.
+      </li>
+      <li>
+        El enrutador se basa en las rutas definidas en el archivo
+        <code>app-routing.module.ts</code>.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p><strong>Componentes:</strong></p>
+    <ul>
+      <li>Cada ruta está asociada a un componente específico.</li>
+      <li>
+        Cuando se navega a una nueva ruta, el enrutador busca el componente
+        correspondiente y lo carga en el contenedor principal.
+      </li>
+      <li>
+        El componente se renderiza y actualiza el contenido de la página,
+        creando la ilusión de que se ha cargado una nueva página.
+      </li>
+    </ul>
+  </li>
+</ol>
+<p><strong>Ejemplo:</strong></p>
+<p>TypeScript</p>
+<pre><code>// app-routing.module.ts
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'about', component: AboutComponent }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+
+</code></pre>
+<p>En este ejemplo, tenemos dos rutas:</p>
+<ul>
+  <li><code>/</code>: Muestra el componente <code>HomeComponent</code>.</li>
+  <li>
+    <code>/about</code>: Muestra el componente <code>AboutComponent</code>.
+  </li>
+</ul>
+<p>
+  Cuando el usuario hace clic en un enlace que apunta a <code>/about</code>, el
+  enrutador destruye el componente <code>HomeComponent</code> actualmente
+  visible y crea una instancia del componente <code>AboutComponent</code>, que
+  se renderiza en el contenedor principal.
+</p>
+<h2 id="seccion2">
+  <strong>Características clave de la navegación en una SPA:</strong>
+</h2>
+<ul>
+  <li>
+    <strong>Experiencia de usuario fluida:</strong> Las transiciones entre
+    vistas son rápidas y sin interrupciones.
+  </li>
+  <li>
+    <strong>Desarrollo modular:</strong> Cada vista se encapsula en un
+    componente independiente, lo que facilita la organización y el mantenimiento
+    del código.
+  </li>
+  <li>
+    <strong>SEO:</strong> El SEO puede ser más complejo en SPAs, ya que los
+    motores de búsqueda pueden tener dificultades para indexar el contenido
+    dinámico. Sin embargo, existen técnicas para mejorar el SEO en SPAs.
+  </li>
+  <li>
+    <strong>Estado de la aplicación:</strong> El estado de la aplicación se
+    mantiene a medida que el usuario navega entre las diferentes vistas, lo que
+    permite una mayor personalización y una experiencia de usuario más
+    coherente.
+  </li>
+</ul>

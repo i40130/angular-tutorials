@@ -1,0 +1,144 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+  >
+    IMPLEMENTACION DE LA LOGICA EN TYPESCRIPT
+  </h1>
+</header>
+
+<p class="lead">
+  <strong>TypeScript</strong> es un superconjunto de JavaScript que agrega
+  características de tipado estático, interfaces y clases, lo que lo convierte
+  en una herramienta poderosa para construir aplicaciones web robustas y
+  escalables. Al implementar la lógica en TypeScript, se obtiene una mayor
+  seguridad de tipo, mejor legibilidad del código y una mayor productividad.
+</p>
+<h2 id="seccion1">
+  Características clave de TypeScript para la implementación de lógica
+</h2>
+<ul>
+  <li>
+    <strong>Tipado estático:</strong> Define los tipos de datos de variables,
+    funciones y parámetros, lo que ayuda a prevenir errores en tiempo de
+    compilación y facilita la depuración.
+  </li>
+  <li>
+    <strong>Interfaces:</strong> Definen contratos para objetos, asegurando que
+    los datos tengan la estructura esperada.
+  </li>
+  <li>
+    <strong>Clases:</strong> Permiten crear objetos con propiedades y métodos,
+    promoviendo la programación orientada a objetos.
+  </li>
+  <li>
+    <strong>Módulos:</strong> Organizan el código en módulos, mejorando la
+    modularidad y la reutilización.
+  </li>
+  <li>
+    <strong>Decoradores:</strong> Añaden metadatos a clases, propiedades,
+    métodos y parámetros, permitiendo personalizar el comportamiento de las
+    clases.
+  </li>
+</ul>
+<h2 id="seccion2">Ejemplos de implementación de lógica en TypeScript</h2>
+<h3 id="subseccion2-1">Funciones con tipado</h3>
+<p>TypeScript</p>
+<pre><code>function suma(a: number, b: number): number {
+    return a + b;
+}
+
+const resultado = suma(2, 3); // resultado será de tipo number
+
+</code></pre>
+<h3 id="subseccion2-2">Interfaces</h3>
+<p>TypeScript</p>
+<pre><code>interface Persona {
+    nombre: string;
+    edad: number;
+}
+
+const persona: Persona = {
+    nombre: 'Juan',
+    edad: 30
+};
+
+</code></pre>
+<h3 id="subseccion2-3">Clases</h3>
+<p>TypeScript</p>
+<pre><code>class Coche {
+    constructor(public marca: string, public modelo: string) {}
+
+    acelerar() {
+        console.log('Acelerando...');
+    }
+}
+
+const miCoche = new Coche('Toyota', 'Corolla');
+miCoche.acelerar();
+
+</code></pre>
+<h3 id="subseccion2-4">Módulos</h3>
+<p>TypeScript</p>
+<pre><code>// archivo: operaciones.ts
+export function multiplicar(a: number, b: number): number {
+    return a * b;
+}
+
+// archivo: main.ts
+import { multiplicar } from './operaciones';
+
+const resultado = multiplicar(5, 4);
+
+</code></pre>
+<h3 id="subseccion2-5">Decoradores</h3>
+<p>TypeScript</p>
+<pre><code>function loggable(target: any, propertyKey: string, descriptor: PropertyDescriptor) {
+    const originalMethod = descriptor.value;
+    descriptor.value = function(...args: any[]) {
+        console.log(`Llamando a ${propertyKey} con argumentos:`, args);
+        const result = originalMethod.apply(this, args);
+        console.log(`Resultado:`, result);
+        return result;
+    };
+}
+
+class Calculadora {
+    @loggable
+    suma(a: number, b: number): number {
+        return a + b;
+    }
+}
+
+</code></pre>
+<h2 id="seccion3">
+  Ventajas de usar TypeScript para la implementación de lógica
+</h2>
+<ul>
+  <li>
+    <strong>Mayor seguridad de tipo:</strong> Reduce errores comunes en tiempo
+    de ejecución.
+  </li>
+  <li>
+    <strong>Mejor legibilidad del código:</strong> El código es más fácil de
+    entender y mantener.
+  </li>
+  <li>
+    <strong>Mayor productividad:</strong> Las herramientas de desarrollo ofrecen
+    una mejor autocompletado y refactorización.
+  </li>
+  <li>
+    <strong>Interoperabilidad con JavaScript:</strong> El código TypeScript se
+    transpila a JavaScript, por lo que puede ser utilizado en cualquier entorno
+    que soporte JavaScript.
+  </li>
+  <li>
+    <strong>Integración con frameworks:</strong> TypeScript se integra
+    fácilmente con frameworks como Angular, React y Vue.
+  </li>
+</ul>
+<p>
+  TypeScript proporciona un conjunto de herramientas y características que
+  facilitan la implementación de lógica en aplicaciones web. Al utilizar
+  TypeScript, los desarrolladores pueden escribir código más limpio, seguro y
+  mantenible.
+</p>

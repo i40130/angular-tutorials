@@ -1,0 +1,154 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+  >
+    LAZY LOADING
+  </h1>
+</header>
+<p class="lead">
+  Lazy Loading en Angular: Carga Diferida para un Mejor Rendimiento
+</p>
+<h2 id="seccion1"><strong>¿Qué es el Lazy Loading?</strong></h2>
+<p>
+  El lazy loading, o carga diferida, es una técnica en Angular que permite
+  cargar módulos solo cuando son necesarios, en lugar de cargarlos todos al
+  iniciar la aplicación. Esto resulta en un mejor rendimiento, especialmente en
+  aplicaciones grandes, ya que reduce el tamaño inicial del bundle y mejora el
+  tiempo de carga de la página.
+</p>
+<h2 id="¿por-qué-utilizar-lazy-loading">
+  <strong>¿Por qué utilizar Lazy Loading?</strong>
+</h2>
+<ul>
+  <li>
+    <strong>Mejor rendimiento:</strong> Al cargar solo los módulos necesarios,
+    se reduce el tamaño inicial del bundle y se mejora el tiempo de carga de la
+    página.
+  </li>
+  <li>
+    <strong>Mejor experiencia de usuario:</strong> La aplicación se siente más
+    rápida y responsiva, especialmente en dispositivos móviles.
+  </li>
+  <li>
+    <strong>Modularidad:</strong> Permite organizar la aplicación en módulos más
+    pequeños y enfocados.
+  </li>
+</ul>
+<figure>
+  <img
+    src="https://www.kukumav.net/blog/wp-content/uploads/2020/06/lazy-load-kullanimi.jpg"
+    alt="Lazy Loading"
+  />
+  <figcaption>Lazy Loading</figcaption>
+</figure>
+
+<h2 id="seccion2"><strong>Cómo implementar Lazy Loading</strong></h2>
+<ol>
+  <li>
+    <p><strong>Crear un módulo:</strong></p>
+    <p>Bash</p>
+    <pre><code>ng generate module nombre-modulo --route=ruta
+
+</code></pre>
+    <p>
+      Esta línea de comando genera un nuevo módulo y configura automáticamente
+      el enrutamiento para cargarlo de forma diferida.
+    </p>
+  </li>
+  <li>
+    <p>
+      <strong>Configurar el routing:</strong> En el archivo
+      <code>app-routing.module.ts</code>, se agrega una ruta con el
+      <code>loadChildren</code> que apunta al módulo a cargar de forma diferida:
+    </p>
+    <p>TypeScript</p>
+    <pre><code>const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'products', loadChildren: () =&gt; import('./products/products.module').then(m =&gt; m.ProductsModule) }
+];
+
+</code></pre>
+  </li>
+  <li>
+    <p>
+      <strong>Utilizar el módulo:</strong> Cuando el usuario navega a la ruta
+      configurada, el módulo se cargará de forma asíncrona.
+    </p>
+  </li>
+</ol>
+<p><strong>Ejemplo Completo</strong></p>
+<p>TypeScript</p>
+<pre><code>// app-routing.module.ts
+import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
+
+const routes: Routes = [
+  { path: '', component: HomeComponent },
+  { path: 'products', loadChildren: () =&gt; import('./products/products.module').then(m =&gt; m.ProductsModule) }
+];
+
+@NgModule({
+  imports: [RouterModule.forRoot(routes)],
+  exports: [RouterModule]
+})
+export class AppRoutingModule { }
+
+</code></pre>
+<p>TypeScript</p>
+<pre><code>// products.module.ts
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { ProductsComponent } from './products/products.component';
+
+const routes: Routes = [
+  { path: '', component: ProductsComponent }
+];
+
+@NgModule({
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes)
+  ],
+  declarations: [
+    ProductsComponent
+  ]
+})
+export class ProductsModule { }
+
+</code></pre>
+<h2 id="seccion3"><strong>Consideraciones Adicionales</strong></h2>
+<ul>
+  <li>
+    <strong>Preloading:</strong> Puedes precargar módulos que se esperan que
+    sean utilizados con frecuencia para mejorar la experiencia del usuario.
+  </li>
+  <li>
+    <strong>Componentes compartidos:</strong> Si un componente se utiliza en
+    varios módulos, puedes extraerlo a un módulo compartido.
+  </li>
+  <li>
+    <strong>Lazy loading de rutas:</strong> Puedes cargar de forma diferida
+    rutas anidadas dentro de un módulo.
+  </li>
+</ul>
+<p><strong>Beneficios del Lazy Loading:</strong></p>
+<ul>
+  <li>
+    <strong>Mejor rendimiento inicial:</strong> Reduce el tamaño del bundle
+    inicial, lo que mejora la velocidad de carga de la página.
+  </li>
+  <li>
+    <strong>Mejor experiencia de usuario:</strong> Las páginas cargan más
+    rápido, lo que resulta en una mejor experiencia de usuario.
+  </li>
+  <li>
+    <strong>Modularidad:</strong> Facilita la organización y el mantenimiento
+    del código.
+  </li>
+  <li>
+    <strong>Escalabilidad:</strong> Permite crear aplicaciones más grandes y
+    complejas.
+  </li>
+</ul>

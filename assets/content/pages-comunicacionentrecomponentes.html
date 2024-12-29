@@ -1,0 +1,166 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+  >
+    COMUNICACION ENTRE COMPONENTES
+  </h1>
+</header>
+
+<p class="lead">
+  En Angular, los componentes son bloques constructores fundamentales de las
+  aplicaciones. Para crear interfaces de usuario dinámicas y complejas, es
+  esencial que estos componentes puedan comunicarse entre sí de manera efectiva.
+  Existen varias estrategias para lograr esta comunicación, cada una con sus
+  propias ventajas y desventajas.
+</p>
+<h2 id="seccion1">Métodos de Comunicación</h2>
+<ol>
+  <li>
+    <p><strong>@Input y @Output:</strong></p>
+    <ul>
+      <li>
+        <strong>@Input:</strong> Permite pasar datos desde un componente padre a
+        un componente hijo. Es una comunicación unidireccional.
+      </li>
+      <li>
+        <strong>@Output:</strong> Permite que un componente hijo emita eventos
+        al componente padre. Es una comunicación bidireccional.
+      </li>
+    </ul>
+    <p>TypeScript</p>
+    <pre><code>// Componente padre
+&lt;app-child [data]="myData" (childEvent)="onChildEvent($event)"&gt;&lt;/app-child&gt;
+
+// Componente hijo
+@Input() data: any;
+@Output() childEvent = new EventEmitter();
+
+</code></pre>
+  </li>
+  <li>
+    <p><strong>Servicios:</strong></p>
+    <ul>
+      <li>
+        Se crea un servicio para compartir datos y lógica entre múltiples
+        componentes.
+      </li>
+      <li>
+        Los componentes inyectan el servicio y acceden a sus métodos y
+        propiedades.
+      </li>
+      <li>Es ideal para compartir datos globales y lógica compleja.</li>
+    </ul>
+    <p>TypeScript</p>
+    <pre><code>// data.service.ts
+import { Injectable } from '@angular/core';
+
+@Injectable({ providedIn: 'root' })
+export class DataService {
+    data = 'Este es un dato compartido';
+}
+
+</code></pre>
+  </li>
+  <li>
+    <p><strong>Subject y BehaviorSubject:</strong></p>
+    <ul>
+      <li>
+        Son observables especiales que permiten emitir valores múltiples y
+        mantener un valor inicial.
+      </li>
+      <li>
+        Son útiles para crear canales de comunicación entre componentes no
+        relacionados.
+      </li>
+    </ul>
+    <p>TypeScript</p>
+    <pre><code>// data.service.ts
+import { BehaviorSubject } from 'rxjs';
+
+@Injectable({ providedIn: 'root' })
+export class DataService {
+    private dataSubject = new BehaviorSubject&lt;string&gt;('Valor inicial');
+    data$ = this.dataSubject.asObservable();
+
+    setData(data: string) {
+        this.dataSubject.next(data);
+    }
+}
+
+</code></pre>
+  </li>
+  <li>
+    <p><strong>@ViewChild y ViewChildren:</strong></p>
+    <ul>
+      <li>
+        Permiten acceder a los componentes hijos desde el componente padre.
+      </li>
+      <li>
+        Se utiliza para obtener referencias a elementos del DOM o a otros
+        componentes y manipularlos directamente.
+      </li>
+    </ul>
+    <p>TypeScript</p>
+    <pre><code>// Componente padre
+@ViewChild(ChildComponent) childComponent: ChildComponent;
+
+</code></pre>
+  </li>
+  <li>
+    <p><strong>Redux (NgRx):</strong></p>
+    <ul>
+      <li>Es una librería de gestión de estado inspirada en Redux.</li>
+      <li>
+        Proporciona un estado global único para la aplicación y un mecanismo
+        para actualizarlo de forma predecible.
+      </li>
+      <li>Ideal para aplicaciones grandes y complejas.</li>
+    </ul>
+  </li>
+</ol>
+<h2 id="seccion2">Cuándo usar cada método</h2>
+<ul>
+  <li>
+    <strong>@Input y @Output:</strong> Para una comunicación simple entre
+    componentes padre e hijo.
+  </li>
+  <li>
+    <strong>Servicios:</strong> Para compartir datos y lógica entre múltiples
+    componentes no relacionados.
+  </li>
+  <li>
+    <strong>Subject y BehaviorSubject:</strong> Para crear canales de
+    comunicación unidireccionales o multidireccionales.
+  </li>
+  <li>
+    <strong>@ViewChild y ViewChildren:</strong> Para acceder y manipular
+    directamente componentes hijos desde el componente padre.
+  </li>
+  <li>
+    <strong>Redux (NgRx):</strong> Para gestionar estados complejos y
+    aplicaciones de gran escala.
+  </li>
+</ul>
+<h2 id="seccion3">Consideraciones adicionales</h2>
+<ul>
+  <li>
+    <strong>Escalabilidad:</strong> Para aplicaciones grandes, considera usar un
+    patrón de gestión de estado como NgRx.
+  </li>
+  <li>
+    <strong>Rendimiento:</strong> Evita sobrecargar los componentes con
+    demasiadas suscripciones a observables.
+  </li>
+  <li>
+    <strong>Claridad:</strong> Elige el método de comunicación que mejor se
+    adapte a la complejidad de tu aplicación y que sea fácil de entender y
+    mantener.
+  </li>
+</ul>
+<p><strong>¿Cuál es el mejor método?</strong></p>
+<p>
+  La elección del método de comunicación depende de la complejidad de tu
+  aplicación, la relación entre los componentes y los requisitos específicos de
+  tu proyecto. A menudo, se combinan varios métodos para lograr una solución
+  efectiva.
+</p>

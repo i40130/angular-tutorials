@@ -1,0 +1,140 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+  >
+    SERVICIOS
+  </h1>
+</header>
+<p class="lead">
+  Los servicios en Angular son una pieza clave para la organización y
+  reutilización de la lógica de negocio. Son como cajas de herramientas que
+  contienen funcionalidades específicas que pueden ser compartidas y utilizadas
+  por múltiples componentes.
+</p>
+<h2 id="seccion1">
+  ¿Qué son los servicios en Angular?
+</h2>
+<p>
+  Los servicios en Angular son clases TypeScript que encapsulan una
+  funcionalidad específica, como:
+</p>
+<ul>
+  <li>
+    <strong>Acceso a datos:</strong> Realizar peticiones HTTP a un servidor.
+  </li>
+  <li>
+    <strong>Manejo de estados:</strong> Gestionar el estado global de la
+    aplicación.
+  </li>
+  <li><strong>Validación de datos:</strong> Validar la entrada del usuario.</li>
+  <li>
+    <strong>Utilidades:</strong> Proporcionar funciones comunes que pueden ser
+    utilizadas en diferentes partes de la aplicación.
+  </li>
+</ul>
+<h2 id="seccion2">¿Por qué utilizar servicios?</h2>
+<ul>
+  <li>
+    <strong>Reutilización de código:</strong> Evita repetir código en múltiples
+    componentes.
+  </li>
+  <li>
+    <strong>Mejor organización:</strong> Separa la lógica de negocio de la
+    vista.
+  </li>
+  <li>
+    <strong>Facilita las pruebas:</strong> Permite probar de forma aislada cada
+    servicio.
+  </li>
+  <li>
+    <strong>Mejora la mantenibilidad:</strong> Hace que el código sea más fácil
+    de entender y mantener.
+  </li>
+</ul>
+<h2 id="seccion3"><strong>¿Cómo crear un servicio?</strong></h2>
+<p>
+  Para crear un servicio, se utiliza el decorador <code>@Injectable()</code>:
+</p>
+<p>TypeScript</p>
+<pre><code>import { Injectable } from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class MiServicioService {
+  constructor() { }
+
+  // Métodos del servicio
+  saludar(nombre: string) {
+    return `Hola, ${nombre}!`;
+  }
+}
+
+</code></pre>
+<h2 id="seccion4">
+  <strong>¿Cómo inyectar un servicio en un componente?</strong>
+</h2>
+<p>
+  Para utilizar un servicio en un componente, se inyecta en el constructor del
+  componente:
+</p>
+<p>TypeScript</p>
+<pre><code>import { Component } from '@angular/core';
+import { MiServicioService } from './mi-servicio.service';
+
+@Component({
+  selector: 'app-mi-componente',
+  templateUrl: './mi-componente.component.html',
+  styleUrls: ['./mi-componente.component.css']
+})
+export class MiComponenteComponent {
+  constructor(private miServicio: MiServicioService) { }
+
+  saludar() {
+    console.log(this.miServicio.saludar('Angular'));
+  }
+}
+
+</code></pre>
+<h2 id="seccion5">
+  <strong>Características clave de los servicios</strong>
+</h2>
+<ul>
+  <li>
+    <strong>Inyección de dependencias:</strong> Los servicios pueden depender de
+    otros servicios, lo que permite crear una gráfica de dependencias.
+  </li>
+  <li>
+    <strong>Ciclo de vida:</strong> Los servicios tienen un ciclo de vida
+    similar al de los componentes.
+  </li>
+  <li>
+    <strong>Observables:</strong> Los servicios a menudo utilizan observables
+    para manejar datos asíncronos y eventos.
+  </li>
+  <li>
+    <strong>Proveedores:</strong> Los servicios se proporcionan a los
+    componentes a través de proveedores.
+  </li>
+</ul>
+<h2 id="seccion6">
+  <strong>Ejemplos de uso de servicios</strong>
+</h2>
+<ul>
+  <li>
+    <strong>Servicios HTTP:</strong> Para realizar peticiones a una API y
+    obtener datos.
+  </li>
+  <li>
+    <strong>Servicios de autenticación:</strong> Para gestionar la autenticación
+    de usuarios.
+  </li>
+  <li>
+    <strong>Servicios de almacenamiento:</strong> Para almacenar datos
+    localmente (localStorage, sessionStorage).
+  </li>
+  <li>
+    <strong>Servicios de utilidades:</strong> Para proporcionar funciones
+    comunes como validación de formularios, formateo de fechas, etc.
+  </li>
+</ul>

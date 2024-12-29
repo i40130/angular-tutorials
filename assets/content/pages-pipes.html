@@ -1,0 +1,117 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white">
+    PIPES
+  </h1>
+</header>
+<h2 id="seccion1">Transformando Datos en las Plantillas</h2>
+<h3 id="subseccion1-1">¿Qué son los Pipes en Angular?</h3>
+<p>
+  Los pipes en Angular son una forma concisa de transformar datos antes de
+  mostrarlos en la plantilla. Permiten formatear fechas, números, cadenas y
+  realizar otras operaciones de transformación de datos sin necesidad de
+  escribir código complejo en el componente.
+</p>
+<h3 id="subseccion1-2">¿Para qué sirven los Pipes?</h3>
+<ul>
+  <li>
+    <strong>Formateo de fechas:</strong> Mostrar fechas en diferentes formatos
+    (ej: ‘dd/MM/yyyy’, ‘MMMM dd, yyyy’).
+  </li>
+  <li>
+    <strong>Formateo de números:</strong> Mostrar números con un determinado
+    número de decimales, con separadores de miles, etc.
+  </li>
+  <li>
+    <strong>Formateado de cadenas:</strong> Convertir a mayúsculas, minúsculas,
+    capitalizar, etc.
+  </li>
+  <li>
+    <strong>Creación de pipes personalizados:</strong> Para realizar
+    transformaciones específicas que no estén incluidas en los pipes
+    predefinidos.
+  </li>
+</ul>
+<h3 id="subseccion1-3">Tipos de Pipes</h3>
+<ul>
+  <li>
+    <strong>Pipes puros:</strong> Se ejecutan cada vez que cambian las entradas.
+    Son ideales para transformaciones simples y rápidas.
+  </li>
+  <li>
+    <strong>Pipes impuros:</strong> Se ejecutan en cada ciclo de detección de
+    cambios. Se utilizan para transformaciones más complejas que requieren
+    acceder a servicios o realizar operaciones costosas.
+  </li>
+</ul>
+<h3 id="subseccion1-4">Pipes Predefinidos</h3>
+<ul>
+  <li><strong>DatePipe:</strong> Formatea fechas.</li>
+  <li><strong>NumberPipe:</strong> Formatea números.</li>
+  <li><strong>UpperCasePipe:</strong> Convierte una cadena a mayúsculas.</li>
+  <li><strong>LowerCasePipe:</strong> Convierte una cadena a minúsculas.</li>
+  <li><strong>CurrencyPipe:</strong> Formatea valores monetarios.</li>
+  <li><strong>PercentPipe:</strong> Formatea valores porcentuales.</li>
+  <li><strong>DecimalPipe:</strong> Formatea números decimales.</li>
+</ul>
+<h3 id="subseccion1-5">Ejemplo de uso</h3>
+<p>HTML</p>
+<pre><code>&lt;p&gt;Hoy es {{ today | date:'fullDate' }}&lt;/p&gt;
+&lt;p&gt;El precio es: {{ price | currency:'USD' }}&lt;/p&gt;
+
+</code></pre>
+<p><strong>Creación de un Pipe Personalizado:</strong></p>
+<p>TypeScript</p>
+<pre><code>import { Pipe, PipeTransform } from '@angular/core';
+
+@Pipe({
+  name: 'truncate'
+})
+export class TruncatePipe implements PipeTransform {
+  transform(value: string, limit: number = 25): string {
+    return value.length &gt; limit ? `${value.substring(0, limit)}...` : value;
+  }
+}
+
+</code></pre>
+<p><strong>Uso del Pipe Personalizado:</strong></p>
+<p>HTML</p>
+<pre><code>&lt;p&gt;{{ longText | truncate:10 }}&lt;/p&gt;
+
+</code></pre>
+<h2 id="seccion2">Ventajas de usar Pipes</h2>
+<ul>
+  <li>
+    <strong>Legibilidad:</strong> Mejoran la legibilidad de las plantillas al
+    separar la lógica de presentación de la lógica del componente.
+  </li>
+  <li>
+    <strong>Reutilización:</strong> Los pipes pueden ser reutilizados en
+    diferentes componentes.
+  </li>
+  <li>
+    <strong>Mantenimiento:</strong> Facilitan el mantenimiento del código al
+    centralizar la lógica de formateo.
+  </li>
+</ul>
+<p><strong>Consideraciones:</strong></p>
+<ul>
+  <li>
+    <strong>Rendimiento:</strong> Los pipes puros son más eficientes que los
+    impuros.
+  </li>
+  <li>
+    <strong>Complejidad:</strong> Para transformaciones muy complejas, puede ser
+    más adecuado crear un servicio.
+  </li>
+  <li>
+    <strong>Pureza:</strong> Asegúrate de que un pipe sea puro si no necesita
+    acceder a servicios o realizar operaciones con efectos secundarios.
+  </li>
+</ul>
+<p>
+  Los pipes son una gran herramienta en Angular para transformar datos y mejorar
+  la presentación de la información en las plantillas. Al utilizar pipes de
+  forma efectiva, puedes crear aplicaciones más limpias, mantenibles y con una
+  mejor experiencia de usuario.
+</p>

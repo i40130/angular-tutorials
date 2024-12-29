@@ -1,0 +1,121 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+  >
+    TYPESCRIPT
+  </h1>
+</header>
+
+<p class="lead">
+  TypeScript es el lenguaje de programación principal de Angular y juega un
+  papel fundamental en la construcción de aplicaciones robustas y escalables.
+</p>
+<h2 id="seccion1">
+  TypeScript en Angular: Un Superconjunto de JavaScript con Beneficios
+  Adicionales
+</h2>
+<p>
+  TypeScript es un superconjunto de JavaScript que agrega características de
+  tipado estático, interfaces, clases y otras construcciones que facilitan la
+  escritura de código más limpio, seguro y mantenible.
+</p>
+<h2 id="seccion2">¿Por qué TypeScript en Angular?</h2>
+<ul>
+  <li>
+    <strong>Tipado estático:</strong> Ayuda a prevenir errores comunes en tiempo
+    de ejecución al verificar los tipos de datos en tiempo de compilación.
+  </li>
+  <li>
+    <strong>Clases y objetos:</strong> Permite organizar el código en clases y
+    objetos, facilitando la creación de componentes y servicios reutilizables.
+  </li>
+  <li>
+    <strong>Interfaces:</strong> Definen contratos para los datos, mejorando la
+    legibilidad y la mantenibilidad del código.
+  </li>
+  <li>
+    <strong>Generics:</strong> Proporcionan una forma de escribir código
+    reutilizable que funciona con diferentes tipos de datos.
+  </li>
+  <li>
+    <strong>Decoradores:</strong> Permiten agregar metadatos a clases,
+    propiedades y métodos, lo que es fundamental para la funcionalidad de
+    Angular.
+  </li>
+</ul>
+<h2 id="seccion3">Características clave de TypeScript en Angular</h2>
+<ul>
+  <li>
+    <strong>Decoradores:</strong> Los decoradores como <code>@Component</code>,
+    <code>@NgModule</code>, <code>@Injectable</code> y otros se utilizan para
+    definir la metadata de las clases de Angular.
+  </li>
+  <li>
+    <strong>Interfaces:</strong> Se utilizan para definir la estructura de los
+    datos y los contratos entre diferentes partes de la aplicación.
+  </li>
+  <li>
+    <strong>Clases:</strong> Se utilizan para crear componentes, servicios y
+    otros objetos.
+  </li>
+  <li>
+    <strong>Generics:</strong> Se utilizan para crear componentes y servicios
+    reutilizables que pueden trabajar con diferentes tipos de datos.
+  </li>
+  <li>
+    <strong>Namespaces:</strong> Ayudan a organizar el código en espacios de
+    nombres para evitar conflictos de nombres.
+  </li>
+</ul>
+<h2 id="seccion4"><strong>Ejemplo de uso de TypeScript en Angular</strong></h2>
+<p>TypeScript</p>
+<pre><code>import { Component } from '@angular/core';
+
+@Component({
+  selector: 'app-mi-componente',
+  templateUrl: './mi-componente.component.html',
+  styleUrls: ['./mi-componente.component.css']
+})
+export class MiComponenteComponent {
+  nombre: string = 'Mundo';
+
+  saludar() {
+    console.log(`Hola, ${this.nombre}!`);
+  }
+}
+
+</code></pre>
+<p>En este ejemplo:</p>
+<ul>
+  <li>
+    <code>@Component</code>: Decorador que marca la clase como un componente.
+  </li>
+  <li>
+    <code>nombre</code>: Propiedad de tipo <code>string</code> que almacena un
+    nombre.
+  </li>
+  <li><code>saludar()</code>: Método que imprime un saludo en la consola.</li>
+</ul>
+<h2 id="seccion5">
+  <strong>Beneficios de utilizar TypeScript en Angular</strong>
+</h2>
+<ul>
+  <li>
+    <strong>Mayor productividad:</strong> El tipado estático ayuda a detectar
+    errores más temprano en el proceso de desarrollo, lo que ahorra tiempo y
+    esfuerzo.
+  </li>
+  <li>
+    <strong>Código más limpio y mantenible:</strong> Las clases, interfaces y
+    otros conceptos de TypeScript hacen que el código sea más fácil de entender
+    y modificar.
+  </li>
+  <li>
+    <strong>Mejor colaboración en equipo:</strong> Un código base con TypeScript
+    es más fácil de entender y mantener por diferentes desarrolladores.
+  </li>
+  <li>
+    <strong>Mayor escalabilidad:</strong> TypeScript ayuda a construir
+    aplicaciones más grandes y complejas de forma más organizada.
+  </li>
+</ul>

@@ -1,0 +1,155 @@
+﻿<header class="mb-4 lg:mb-6 not-format">
+  <h1
+    class="mb-4 text-3xl font-extrabold leading-tight text-gray-900 lg:mb-6 lg:text-4xl dark:text-white"
+  >
+    DIRECTIVAS
+  </h1>
+</header>
+
+<p class="lead">
+  Las directivas en Angular son herramientas poderosas que nos permiten extender
+  la funcionalidad del HTML y crear componentes personalizados. Son como
+  mini-componentes que pueden modificar el comportamiento o la apariencia de
+  elementos del DOM.
+</p>
+<h2 id="seccion1">¿Qué son las directivas en Angular?</h2>
+<p>
+  Las directivas son clases que añaden un nuevo comportamiento o modifican el
+  existente a los elementos de la plantilla. Básicamente, las directivas se
+  utilizan para manipular el DOM, por ejemplo, añadiendo/quitando 1 elementos
+  del DOM o cambiando la apariencia de los elementos del DOM.
+</p>
+<h2 id="seccion2">Tipos de directivas</h2>
+<p>Angular ofrece tres tipos principales de directivas:</p>
+<ol>
+  <li>
+    <p>
+      <strong>Directivas estructurales:</strong> Estas directivas modifican la
+      estructura del DOM. Algunos ejemplos comunes son:
+    </p>
+    <ul>
+      <li>
+        <code>*ngIf</code>: Muestra o oculta un elemento basado en una
+        condición.
+      </li>
+      <li>
+        <code>*ngFor</code>: Repite un elemento para cada item en una lista.
+      </li>
+      <li>
+        <code>*ngSwitch</code>: Muestra diferentes elementos basados en una
+        expresión.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>
+      <strong>Directivas de atributos:</strong> Estas directivas añaden
+      atributos a elementos existentes y modifican su comportamiento. Algunos
+      ejemplos comunes son:
+    </p>
+    <ul>
+      <li>
+        <code>ngClass</code>: Agrega, quita o cambia clases CSS a un elemento.
+      </li>
+      <li>
+        <code>ngStyle</code>: Establece estilos en línea para un elemento.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <p>
+      <strong>Directivas de componentes:</strong> Los componentes son en
+      realidad directivas con una plantilla. Son la forma más común de crear
+      elementos personalizados en Angular.
+    </p>
+  </li>
+</ol>
+<h2 id="seccion3">Creando una directiva personalizada</h2>
+<p>
+  Para crear una directiva personalizada, utilizamos el decorador
+  <code>@Directive</code>. Aquí un ejemplo de una directiva que resalta un
+  elemento:
+</p>
+<p>TypeScript</p>
+<pre><code>import { Directive, ElementRef, HostListener } from '@angular/core';
+
+@Directive({
+  selector: '[appHighlight]'
+})
+export class HighlightDirective {
+  constructor(private el: ElementRef) {
+    el.nativeElement.style.backgroundColor = 'yellow';
+  }
+}
+
+</code></pre>
+<p>En este ejemplo:</p>
+<ul>
+  <li><code>@Directive</code>: Indica que esta clase es una directiva.</li>
+  <li>
+    <code>selector</code>: Define el selector que se utilizará en el HTML para
+    aplicar la directiva.
+  </li>
+  <li>
+    <code>HostListener</code>: Se utiliza para escuchar eventos en el elemento
+    host.
+  </li>
+</ul>
+<h2 id="seccion4">Utilizando la directiva en una plantilla</h2>
+<p>HTML</p>
+<pre><code>&lt;p appHighlight&gt;Este párrafo estará resaltado&lt;/p&gt;
+
+</code></pre>
+<h2 id="seccion5">Otros conceptos importantes</h2>
+<ul>
+  <li>
+    <strong>Directivas de atributos:</strong> Se utilizan para cambiar la
+    apariencia o el comportamiento de un elemento.
+  </li>
+  <li>
+    <strong>Directivas estructurales:</strong> Se utilizan para modificar la
+    estructura del DOM.
+  </li>
+  <li>
+    <strong>Directivas de componentes:</strong> Son componentes con una
+    plantilla.
+  </li>
+  <li>
+    <strong>HostListener:</strong> Se utiliza para escuchar eventos en el
+    elemento host.
+  </li>
+  <li>
+    <strong>HostBinding:</strong> Se utiliza para enlazar propiedades de la
+    directiva con propiedades del elemento host.
+  </li>
+</ul>
+<h2 id="seccion6">Beneficios de las directivas</h2>
+<ul>
+  <li>
+    <strong>Reutilización de código:</strong> Crea componentes personalizados
+    reutilizables.
+  </li>
+  <li>
+    <strong>Mejora la legibilidad del código:</strong> Separa la lógica de
+    presentación de la lógica de negocio.
+  </li>
+  <li>
+    <strong>Mayor flexibilidad:</strong> Permite crear comportamientos
+    personalizados.
+  </li>
+</ul>
+<h2 id="seccion7">Ejemplos más avanzados</h2>
+<ul>
+  <li>
+    <strong>Creación de validaciones personalizadas:</strong> Crear directivas
+    para validar campos de formularios.
+  </li>
+  <li>
+    <strong>Creación de componentes drag and drop:</strong> Utilizar directivas
+    para implementar funcionalidades de arrastrar y soltar.
+  </li>
+  <li>
+    <strong>Creación de componentes de autocompletado:</strong> Crear
+    componentes que sugieran opciones a medida que el usuario escribe.
+  </li>
+</ul>
